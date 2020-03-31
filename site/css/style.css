@@ -264,7 +264,7 @@ footer{
     }
     .h4{
         color: #ffffff;
-        font: 22px "Source Sans Pro";
+        font: 20px "Source Sans Pro";
         margin: 25px 20px;
         padding-top: 0px;
     }
@@ -313,7 +313,7 @@ footer{
     }
     .h4{
         color: #ffffff;
-        font: 20px "Source Sans Pro";
+        font: 16px "Source Sans Pro";
         margin: 25px 20px;
         padding-top: 0px;
     }
@@ -358,6 +358,95 @@ footer{
     }
     .h4{
         margin: 15px 10px;
+        font-size: 14px;
+    
+    }
+    .equipe{
+        text-align: center;
+        width: 50px;
+    }
+    .img{
+        width: 80px;
+    }
+    .texto{
+        font-size: 15px;
+        text-align: center;
+    }
+    .inputcontato{
+        width: 350px;
+        height: 60px;
+    }
+    .textArea{
+        width: 350px;
+        height: 400px;
+    }
+}
+@media (width: 320px){
+    
+    #menu ul li a{
+        padding: 10px 0px;
+        font-size: 15px;
+    }
+    .servicos{
+        width: 26%;
+        height: 500px;
+    }
+    #mobile{
+        margin-left: 50px;
+    }
+    #web{
+        margin-left: 2px;
+    }
+    #design{
+        margin-left: 2px;
+    }
+    .h4{
+        margin: 15px 0px;
+        font-size: 10px;
+    
+    }
+    .equipe{
+        text-align: center;
+        width: 50px;
+    }
+    .img{
+        width: 80px;
+    }
+    .texto{
+        font-size: 15px;
+        text-align: center;
+    }
+    .inputcontato{
+        width: 350px;
+        height: 60px;
+    }
+    .textArea{
+        width: 350px;
+        height: 400px;
+    }
+}
+@media (min-width: 50px) and (max-width: 299px){
+    
+    #menu ul li a{
+        padding: 10px 0px;
+        font-size: 15px;
+    }
+    .servicos{
+        width: 33%;
+        height: 500px;
+    }
+    #mobile{
+        margin-left: 15px;
+    }
+    #web{
+        margin-left: 15px;
+    }
+    #design{
+        margin-left: 18px;
+    }
+    .h4{
+        margin: 15px 10px;
+        font-size: 10px;
     
     }
     .equipe{
