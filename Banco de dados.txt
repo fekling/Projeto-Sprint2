@@ -1,0 +1,18 @@
+create database Projeto;
+use Projeto;
+
+create table Onibus (
+idOniibus int primary key,
+linha varchar(30),
+sensor varchar(40)
+);
+
+create table empresa (
+codEmpresa int primary key,
+nome varchar(50)
+);
+
+create table sensor (
+idSensor int primary key,
+qtdentraram varchar(40)
+);
