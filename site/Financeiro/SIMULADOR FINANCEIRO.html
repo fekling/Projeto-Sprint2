@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="Stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simule seu faturamento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="tudo">
+            <div class="login">
+        <div class="div_form">
+            <form>
+                Quantidade de onibûs: <br> <input type="number" id="busão" autofocus>
+                <br>
+                <span>Tempo em mês de locação:</span> <br> <input type="number" id="tempo">
+                <br>
+            </form>
+            <a href="#" class="botao" onclick="Simular()">Simular</a>
+        </div>
+            <div id="div_mensagem"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
+<script>
+    function Simular(){
+        var temp = Number(tempo.value);
+        var pagamento = Number(tempo.value) * Number(busão.value) * 400 ;
+        var pagar = Number(pagamento * 0.95);
+        if(temp<=12){
+        div_mensagem.innerHTML = `<p>O valor total será de R$${pagamento.toFixed(2)}</p>`
+     }
+     else{
+        div_mensagem.innerHTML = `<p>O valor total será de R$${pagar.toFixed(2)}</p>`
+     }
+    }
+</script>
