@@ -31,12 +31,12 @@
     function Simular(){
         var temp = Number(tempo.value);
         var pagamento = Number(tempo.value) * Number(busão.value) * 400 ;
-        var pagar = Number(pagamento * 0.95);
-        if(temp<=12){
-        div_mensagem.innerHTML = `<p>O valor total será de R$${pagamento.toFixed(2)}</p>`
+        var pagardesc = Number(pagamento * 0.95);
+        if(temp >= 12){
+        div_mensagem.innerHTML = `<p>O valor total será de R$${pagardesc.toFixed(2)}</p>`
      }
      else{
-        div_mensagem.innerHTML = `<p>O valor total será de R$${pagar.toFixed(2)}</p>`
+        div_mensagem.innerHTML = `<p>O valor total será de R$${pagamento.toFixed(2)}</p>`
      }
     }
 </script>
