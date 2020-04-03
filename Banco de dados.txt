@@ -1,18 +1,45 @@
-create database Projeto;
-use Projeto;
-
-create table Onibus (
-idOniibus int primary key,
-linha varchar(30),
-sensor varchar(40)
+create database bdOnibus;
+use bdOnibus;
+create table onibus(
+	idOnibus int primari key auto_increment,
+	nome varchar(40),
+	idLinha int,
+	idLinha foreign key references linhaOnibus(idOnibus),
+	placa varchar(20),
+	modelo varchar(30),
+	ano date,
+	trajeto varchar(40),
+	idEmpresa int,
+	idEmpresa foreign key references empresa(idEmpresa)
 );
-
-create table empresa (
-codEmpresa int primary key,
-nome varchar(50)
+create table tbSensor(
+	idSensor int primari key auto_increment,
+	idOnibus int,
+	idOnibus foreign key references onibus(idOnibus),
+	localSensor varchar(40)
 );
-
-create table sensor (
-idSensor int primary key,
-qtdentraram varchar(40)
+create table empresa(
+	idEmpresa int primari key auto_increment,
+	nomeEmpresa varchar(40),
+	cnpj varchar(20)
+);
+create table linhaOnibus(
+	idLinha int primari key auto_increment,
+	nome varchar(40),
+	regiao varchar(40)
+);
+create table usuario(
+	idUsuario int primari key auto_increment,
+	nomeUsuario varchar(50),
+	login varchar(40),
+	senha varchar(15)
+);
+create table motorista(
+	idMotorista int primari key auto_increment,
+	nome varchar(50),
+	cnh varchar(15),
+	idOnibus int, 
+	idOnibus foreign key references obinus(idOnibus)
+	idEmpresa int,
+	idEmpresa foreign key references empresa(idEmpresa) 
 );
