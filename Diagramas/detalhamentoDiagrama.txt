@@ -1,0 +1,35 @@
+Sensor(
+	Sensor Óptico reflexivo TCRT5000
+	para captar o fluxo de pessoas que entra e sai nos onibus
+)
+banco de dados(
+	quando o sensor captar os dados ele ira mandar para nosso banco de
+	dados que ira armazenar os dados da quantidade de pessoas que entra
+	e sai tera alem da tabela do sensor outras tabelas como a do usuario
+	a da empresa, onibus,motoristas entre outras para assim organizar
+	os dados de nossos clientes
+)
+sistema (
+	sera desenvolvido em sua maioria nas dependencias da faculdado 
+	bandtec e sera um sistema de facil entendimento onde os sensores
+	ira controlar o fluxo de pessoas para assim a empresa poder fazer
+	o que quiser com esses dados por exemplo se tiver muitos passageiros
+	eles mandem outro onibus para supri os proximos pontos para assim
+	uma melhor viagem para os passageiros
+)
+site(
+	o sistema contara com um site para nossos cliente poderem consultar
+ 	seus dados e para maior  segurança ele ter uma tela de login 
+	contara tambe com uma tela de cadastro para possivel clientes se
+	cadastrarem e na nossa pagina principal que é a pagina que sera 
+	exibida apos o cliente se logar tera todos os dados que os sensores
+	obteram em nos onibus tudo isso em graficos para melhor entendimento
+	e o site tambem sera simples para que o usuario saiba como navegar 
+	dentro dele
+)
+cliente final(
+	com a adiçaõ desse sistema nos queremos que a vida dos nosso clientes
+	fique mais facil pois com os dados eles poderão se preparar para
+	possiveis situações e com isso gerar mais lucro para eles e uma 
+	melhor viagem para os seus clientes
+)
