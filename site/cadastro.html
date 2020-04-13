@@ -4,75 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastro Juridico</title>
+    <link rel="stylesheet" href="css/sistema.css">
+    <title>Tela Cadastro</title>
 </head>
 <body>
 <b>
-    <H1>FICHA EMPRESARIAL</H1><p></p>
-
-<h2>DADOS PARA ACESSO AO SITE : </h2> <br>
+    <div class="container">
+        <div class="div_cadastro">
+            <h2>Cadastro Sistema</h2>
+        <input type="text" id="Nome" class="inputCadastro" placeholder="nome" autofocus><br>
+        <input type="text" placeholder="Login" class="inputCadastro"><br>    
+        <input type="password" placeholder="Senha" class="inputCadastro"><br>
+        <input type="password" placeholder="Confirmação de  Senha" class="inputCadastro"><br>
+        
+        </div>
+       
+        <div class="div_empresa">
+            <h2>Dados Empresa:</h2> 
+            <input type="text" placeholder="Nome da Empresa" class="inputCadastro"><br>
+            
+            <input type="text" placeholder="Cnpj" class="inputCadastro"><br>
+            
+           
+            <input type="text" placeholder="Email" class="inputCadastro"><br>
+        
+            
+            <input type="text" placeholder="Inscrição Estadual" class="inputCadastro">
+        </div>
+        
     
-    LOGIN :
- <input type="text" placeholder="LOGIN"><br>
-
-    SENHA :
-    <input type="password" placeholder="SENHA">
+    </div>
+    <div class="conateiner">
+        <h2 class="txtEndereco">Endereço:</h2>
+        <div class="div_endereco">
+            <input type="text" placeholder="Estado" class="inputCadastro">
+       
+            <input type="text" placeholder="Cidade" class="inputCadastro">
+       
+            <input type="text" placeholder="Bairro" class="inputCadastro">    
+     
+            <input type="text" placeholder="Cep" class="inputCadastro">
     
-    CONFIRME A SENHA :
-    <input type="text" placeholder="REPITA SENHA">
-
-    <h2>Dados:</h2> <br><br>
-
-    NOME DA EMPRESA:
-    <input type="text" placeholder="EMRPESA">
-    CNPJ:
-    <input type="text" placeholder="CNPJ">
+            <input type="text" placeholder="Rua" class="inputCadastro">
+        
+            <input type="text" placeholder="Número" class="inputCadastro">
     
-    EMAIL:
-    <input type="text" placeholder="EMAIL"><br>
-
-    INSCRIÇÃO ESTADUAL:
-    <input type="text" placeholder="INSCRIÇÃO ESTADUAL">
-
-    
-
-    <h2>ENDEREÇO:</h2> <br><br>
-
-    BAIRRO :
-    <input type="text" placeholder="BAIRRO">
-    CIDADE :
-    <input type="text" placeholder="CIDADE">
-    ESTADO :
-    <input type="text" placeholder="ESTADO">    
-    PAIS :
-    <input type="text" placeholder="PAIS">
-    CEP :
-    <input type="text" placeholder="CEP"><br>
-    NÚMERO :
-    <input type="text" placeholder="Número">
-    COMPLEMENTO:
-    <input type="text" placeholder="COMPLEMENTO">
-    
-    <h2>CONTATO DA EMPRESA: </h2><br><br>
-    Fone :
-    <input type="text" placeholder="telefone">
-    Fone Secundario: (OPCIONAL)
-    <input type="text" placeholder="Telefone2">
-
-
-   <H2>RESPONSAVEL FINANCEIRO :</H2>
-
-   NOME:
-   <input type="text" placeholder="NOME"> 
-   SOBRENOME: 
-   <input type="text" placeholder="SOBRENOME">
-   CPF:
-   <input type="text" placeholder="CPF">
-   RG:
-   <input type="text" placeholder="RG">
-
-   CARGO EXERCIDO :
-   <input type="text" placeholder="CARGO EXERCIDO">
+            <input type="text" placeholder="COMPLEMENTO" class="inputCadastro">
+            <input type="text" placeholder="telefone" class="inputCadastro" placeholder="Telefone Fixo">
+            <input type="text" placeholder="Telefone2" class="inputCadastro" placeholder="Telefone 2">
+            <input type="text" placeholder="Nome do Responsavel Financeiro" class="inputCadastro"> 
+            <input type="text" placeholder="Cpf" class="inputCadastro">
+            <input type="text" placeholder="Rg" class="inputCadastro">
+            <input type="text" placeholder="Cargo Exercido" class="inputComplemento">
+        </div>
+    </div>
+    <div class="div_butao">
+        <a href="login.html" class="cadastro2">Voltar</a>
+        <button id="logar" class="btnEntrar">Cadastrar</button>
+    </div>
 </b>
 </body>
 </html>

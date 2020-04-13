@@ -4,6 +4,11 @@
     background-attachment: fixed;
     background-position: center;
 }
+.container{
+    widows: 90%;
+    margin:auto;
+    overflow: hidden;
+}
 .telaLogin{
     text-align: center;
     margin-top: 10%;
@@ -53,4 +58,68 @@
 }
 .btnLogar:hover{
     color: blue;
+}
+.div_cadastro{
+    float: left;
+    margin-left: 30px;
+    margin-right: 40px;
+}
+.div_empresa{
+    float: right;
+    margin-right: 40px;
+}
+.div_endereco{
+    text-align: center;
+}
+.div_butao{
+    margin-top: 20px;
+    text-align: center;
+}
+.inputCadastro{
+    margin-top: 30px;
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+    border: black 1px solid;
+    padding-left: 10px;
+    font-size: 18px;
+    color: grey;
+}
+.btnEntrar{
+    width: 150px;
+    height: 40px;
+    margin-left: 180px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: ARIAL;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btnEntrar:hover{
+    color: blue;
+}
+.cadastro2{
+    text-decoration: none;
+    color: black;
+    margin-left: 0px;
+    font-size: 18px;
+}
+.cadastro2:hover{
+    color: blue;
+}
+.inputComplemento{
+    margin-top: 30px;
+    width: 820px;
+    height: 50px;
+    border-radius: 5px;
+    border: black 1px solid;
+    padding-left: 10px;
+    font-size: 18px;
+    color: grey;
+}
+.txtEndereco{
+    margin: 40px 85px -5px;
 }

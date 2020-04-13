@@ -1,5 +1,10 @@
 create database bdOnibus;
 use bdOnibus;
+create table empresa(
+	idEmpresa int primari key auto_increment,
+	nomeEmpresa varchar(40),
+	cnpj varchar(20)
+);
 create table onibus(
 	idOnibus int primari key auto_increment,
 	nome varchar(40),
@@ -9,20 +14,16 @@ create table onibus(
 	modelo varchar(30),
 	ano date,
 	trajeto varchar(40),
-	idEmpresa int,
-	idEmpresa foreign key references empresa(idEmpresa)
+	fkEmpresa int,
+	foreign key(fkEmpresa) references empresa(idEmpresa)
 );
 create table tbSensor(
 	idSensor int primari key auto_increment,
-	idOnibus int,
-	idOnibus foreign key references onibus(idOnibus),
+	fkOnibus int,
+	foreign key(fkOnibus) references onibus(idOnibus),
 	localSensor varchar(40)
 );
-create table empresa(
-	idEmpresa int primari key auto_increment,
-	nomeEmpresa varchar(40),
-	cnpj varchar(20)
-);
+
 create table linhaOnibus(
 	idLinha int primari key auto_increment,
 	nome varchar(40),
@@ -38,8 +39,8 @@ create table motorista(
 	idMotorista int primari key auto_increment,
 	nome varchar(50),
 	cnh varchar(15),
-	idOnibus int, 
-	idOnibus foreign key references obinus(idOnibus)
-	idEmpresa int,
-	idEmpresa foreign key references empresa(idEmpresa) 
+	fkOnibus int, 
+	foreign key (fkOnibus) references obinus(idOnibus)
+	fkEmpresa int,
+	foreign key(fkEmpresa) references empresa(idEmpresa) 
 );
