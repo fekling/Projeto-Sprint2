@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="Stylesheet">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simule seu faturamento</title>
@@ -14,14 +14,14 @@
             <div class="login">
         <div class="div_form">
             <form>
-                Quantidade de onibûs: <br> <input type="number" id="busão" autofocus>
+                 <input type="number" id="busão" autofocus placeholder="Quantidade de Onibus" class="inputFinanceiro" min="0">
                 <br>
-                <span>Tempo em mês de locação:</span> <br> <input type="number" id="tempo">
-                <br>
+                 <input type="number" id="tempo" placeholder="Tempo em mês de locação:" class="inputFinanceiro" min="0">
             </form>
-            <a href="#" class="botao" onclick="Simular()">Simular</a>
+            <a href="../index.html" class="cadastro">Voltar</a>
+            <button onclick="Simular()" class="btn">Simular</button>
         </div>
-            <div id="div_mensagem"></div>
+            <div id="div_mensagem" class="div_mensagem"></div>
         </div>
     </div>
     
@@ -30,13 +30,24 @@
 <script>
     function Simular(){
         var temp = Number(tempo.value);
-        var pagamento = Number(tempo.value) * Number(busão.value) * 400 ;
-        var pagardesc = Number(pagamento * 0.95);
-        if(temp >= 12){
-        div_mensagem.innerHTML = `<p>O valor total será de R$${pagardesc.toFixed(2)}</p>`
-     }
-     else{
-        div_mensagem.innerHTML = `<p>O valor total será de R$${pagamento.toFixed(2)}</p>`
-     }
+        var qtdOnibus = Number(busão.value);
+        var pagamento = (temp * qtdOnibus) * 400 ;
+        var pagardesc = pagamento * 0.95;
+       
+       if(temp>0 && qtdOnibus>0){
+            if(temp >= 12){
+                div_mensagem.innerHTML = `<p>O valor total será de R$:${pagardesc.toFixed(2)}</p>`
+            }
+            else{
+                div_mensagem.innerHTML = `<p>O valor total será de R$:${pagamento.toFixed(2)}</p>`
+            }
+            div_mensagem.style.color='white';
+       }
+       else if(temp<=0 || qtdOnibus <=0){
+           div_mensagem.innerHTML='Digite um Número Positivo';
+           div_mensagem.style.color = 'red';
+       }
+     
+        
     }
 </script>
