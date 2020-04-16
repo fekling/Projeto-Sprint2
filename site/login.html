@@ -9,10 +9,17 @@
 <body class="body">
     <div class="telaLogin">
         <img src="img/iconeUsuario.jpg" class="usuario" alt=""><br>
-        <input id="login" class="login" placeholder="Digite seu Login" autofocus><br>
-        <input  id="senha" class="login" placeholder="Digite sua Senha"><br>
+        <input id="login" class="login" placeholder="Digite seu Login" autofocus id="email"><br>
+        <input  id="senha" class="login" placeholder="Digite sua Senha" id="senha"><br>
         <a href="cadastro.html" class="cadastro">Cadastro</a>
         <button id="logar" class="btnLogar">Entrar</button>
     </div>
 </body>
 </html>
+<script>
+    function validarLogin(){
+        var login = email.value;
+        var senha = senha.value;
+        var confSenha = confirmacaoSenha.value;
+    }
+</script>
