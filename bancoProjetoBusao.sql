@@ -3,6 +3,11 @@ use mobility_solution;
 create table Empresa(
     cnpj char(17) primary key,
     nome varchar(30),
+    emailEmpresa varchar(30),
+    inscricaoEstadual char(9),
+    nomeResponsavel varchar(50),
+    rgResponsavel varchar(15),
+    cargoResponsavel varchar(40),
     estado varchar(30),
     cidade varchar(30),
     bairro varchar(30),
