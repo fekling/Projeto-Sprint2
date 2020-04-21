@@ -160,6 +160,10 @@
 #menu{
     margin: 0px 0px -120px 505px;
 }
-.tey{
-    background-image: url("img/fundoHome.jpg")
+
+.tudo{
+    background-image: url("../img/1.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
 }
