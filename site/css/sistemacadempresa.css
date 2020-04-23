@@ -5,7 +5,7 @@
     background-position: center;
 }
 .header {
-    background-color: #232323;
+    background-color: #232323ab;
     width: 100%;
     margin-bottom: 50px;
     border-bottom: orange 5px solid; /* estou colocando uma bordar na parte de baixo
@@ -28,7 +28,8 @@
     color: white;
     float: left;
     margin: auto;
-    padding: 10px;
+    padding: 15px 30px;
+    font-size: 25px;
   }
 .container{
     widows: 90%;

@@ -8,7 +8,7 @@
     <title>Tela Cadastro</title>
 </head>
 <body class="body">
-<b>
+
     <div class="container">
         <div class="div_cadastro">
             <h2 class="h2">Preencha o Formulário abaixo</h2>
@@ -23,7 +23,7 @@
         <a href="login.html" class="cadastro">Voltar</a>
         <button id="logar" class="btnEntrar" onclick="validarCadastro()">Cadastrar</button>
     </div>
-</b>
+
 </body>
 </html>
 <script>
@@ -35,6 +35,7 @@
         if(confSenha != senha){
             confirmacaoSenha.innerHTML = 'As Senhas deverão serem iguais';
             confirmacaoSenha.style.border = '2px solid red';
+            
             
         }
         else{
