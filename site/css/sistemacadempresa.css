@@ -217,8 +217,12 @@
 }
 
 .tudo{
-    background-image: url("../img/1.jpg");
+    background-image: url('../img/1.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    margin: 0px;
+    padding: 0;
+
+
 }
