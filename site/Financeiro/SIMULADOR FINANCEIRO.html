@@ -31,14 +31,16 @@
     function Simular(){
         var temp = Number(tempo.value);
         var qtdOnibus = Number(busão.value);
-        var pagamento = (temp * qtdOnibus) * 400 ;
+        var pagamento = (temp * qtdOnibus)  ;
         var pagardesc = pagamento * 0.95;
        
        if(temp>0 && qtdOnibus>0){
             if(temp >= 12){
+                pagamento * 350;
                 div_mensagem.innerHTML = `<p>O valor total será de R$:${pagardesc.toFixed(2)}</p>`
             }
             else{
+                pagamento * 400; 
                 div_mensagem.innerHTML = `<p>O valor total será de R$:${pagamento.toFixed(2)}</p>`
             }
             div_mensagem.style.color='white';

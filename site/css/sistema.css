@@ -4,6 +4,65 @@
     background-attachment: fixed;
     background-position: center;
 }
+.header {
+    background-color: #232323ef;
+    width: 100%;
+    margin-bottom: 50px;
+    border-bottom: orange 5px solid; /* estou colocando uma bordar na parte de baixo
+    do meu header com tamanho de 5px e de estilo solid */
+  }
+  
+  .header .container {
+    min-height: 70px;
+    padding: 10px;
+  }
+  /*  FIM   */
+  
+  /* Titulo do cabeçalho  */
+  
+  .header .container .titulo .span {
+    color: orange;
+  }
+  
+  .titulo {
+    color: white;
+    float: left;
+    margin: auto;
+    padding: 15px 30px;
+    font-size: 25px;
+  }
+.container{
+    widows: 90%;
+    margin:auto;
+    overflow: hidden;
+}
+
+.nav ul li {
+    /* list-style-type: none; se voce for fazer um menu na vertical para remover 
+    as bolinhas da lista, usa essa propriedade */
+    display: inline-block; /* esse remove tambem as bolinhas da lista e coloca os itens
+    da lista lado a lado */
+    margin-left: 20px;
+  }
+  
+  .nav ul {
+    margin: 0 auto;
+    padding: 22px;
+  }
+  
+  .nav a {
+    color: white;
+    text-decoration: none; /* remove o sublinado dos itens da tag <a>, essa tag serve para voce fazer
+    um link */
+  }
+  .nav ul li a:hover {
+    color: orange;
+  }
+  .nav {
+    float: right;
+    /* toda minha lista vai ficar na parte direita do site */
+  }
+
 .container{
     widows: 90%;
     margin:auto;
