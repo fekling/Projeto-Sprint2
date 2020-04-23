@@ -37,16 +37,16 @@
         var temp = Number(tempo.value);
         var qtdOnibus = Number(busão.value);
         var pagamento = (temp * qtdOnibus);
-        var pagardesc = pagamento * 0.95;
+        var pagardesc = 0;
 
         if (temp > 0 && qtdOnibus > 0) {
             if (temp >= 12) {
-                pagamento * 350;
-                div_mensagem.innerHTML = `<p>O valor total será de R$:${pagardesc.toFixed(2)}</p>`
+                pagardesc = pagamento * 350;
+                div_mensagem.innerHTML = `<p>O valor total será de R$:${pagardesc.toFixed(2)} Com Desconto </p>`
             }
             else {
-                pagamento * 400;
-                div_mensagem.innerHTML = `<p>O valor total será de R$:${pagamento.toFixed(2)}</p>`
+                pagardesc = pagamento * 400;
+                div_mensagem.innerHTML = `<p>O valor total será de R$:${pagardesc.toFixed(2)}</p>`
             }
             div_mensagem.style.color = 'white';
         }
@@ -54,7 +54,7 @@
             div_mensagem.innerHTML = 'Digite um Número Positivo';
             div_mensagem.style.color = 'red';
         }
-
+        
 
     }
 </script>

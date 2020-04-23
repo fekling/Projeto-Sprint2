@@ -10,6 +10,9 @@
     margin-bottom: 50px;
     border-bottom: orange 5px solid; /* estou colocando uma bordar na parte de baixo
     do meu header com tamanho de 5px e de estilo solid */
+    margin: 0px;
+    padding: 0;
+
   }
   
   .header .container {
@@ -213,7 +216,7 @@
     color: orange;
 }
 #menu{
-    margin: 0px 0px -120px 505px;
+    margin: 0px 0px -331px 750px;
 }
 
 .tudo{
@@ -223,6 +226,4 @@
     background-position: center;
     margin: 0px;
     padding: 0;
-
-
 }
