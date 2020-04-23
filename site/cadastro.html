@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/sistema.css">
-    
+
     <title>Tela Cadastro</title>
 </head>
+
 <body class="body">
     <div class="header">
         <div class="container">
-          <h1 class="titulo">Mobility<span class="span"> Solution</span></h1>
-          <div class="nav">
-            <ul>
-              <li><a class="ativo" href="home.html">Home</a></li>
-              <li><a href="cadastroEmpresa.html">Cadastrar Empresa</a></li>
-              <li><a class="ativo" href="cadastro.html">Cadastrar Usuário</a></li>
-            </ul>
-          </div>
+            <h1 class="titulo">Mobility<span class="span"> Solution</span></h1>
+            <div class="nav">
+                <ul>
+                    <li><a class="ativo" href="home.html">Home</a></li>
+                    <li><a href="cadastroEmpresa.html">Cadastrar Empresa</a></li>
+                    <li><a class="ativo" href="cadastro.html">Cadastrar Usuário</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
+    </div>
     <div class="container">
         <div class="div_cadastro">
             <h2 class="h2">Preencha o Formulário abaixo</h2>
-        <input type="text" id="nomeCadastro" class="inputCadastro" placeholder="nome" autofocus><br>
-        <input type="text" placeholder="Login" class="inputCadastro" id="email"><br>    
-        <input type="password" placeholder="Senha" class="inputCadastro" id="senha1"><br>
-        <input type="password" placeholder="Confirmação de  Senha" class="inputCadastro" id="confirmacaoSenha"><br>
-        
+            <input type="text" id="nomeCadastro" class="inputCadastro" placeholder="nome" autofocus><br>
+            <input type="text" placeholder="Login" class="inputCadastro" id="email"><br>
+            <input type="password" placeholder="Senha" class="inputCadastro" id="senha1"><br>
+            <input type="password" placeholder="Confirmação de  Senha" class="inputCadastro" id="confirmacaoSenha"><br>
+
         </div>
-       
-    <div class="div_butao">
-        <a href="login.html" class="cadastro">Voltar</a>
-        <button id="logar" class="btnEntrar" onclick="validarCadastro()">Cadastrar</button>
-    </div>
+
+        <div class="div_butao">
+            <a href="home.html" class="cadastro">Voltar</a>
+            <button id="logar" class="btnEntrar" onclick="validarCadastro()">Cadastrar</button>
+        </div>
 
 </body>
+
 </html>
 <script>
-    function validarCadastro(){
+    function validarCadastro() {
         var nome = nomeCadastro.value;
         var login = email.value;
         var senha = senha1.value;
         var confSenha = confirmacaoSenha.value;
-        if(confSenha != senha){
+        if (confSenha != senha) {
             confirmacaoSenha.innerHTML = 'As Senhas deverão serem iguais';
             confirmacaoSenha.style.border = '2px solid red';
-            
-            
+
+
         }
-        else{
+        else {
             confirmacaoSenha.style.border = '1px solid black';
         }
     }

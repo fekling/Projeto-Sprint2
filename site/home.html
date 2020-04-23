@@ -2,33 +2,33 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/sistemacadempresa.css">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/sistemacadempresa.css">
 	<title>Gráfico de 1 linha com Chart.js</title>
 	<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
 	<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
 	<style>
-	canvas{
-		-moz-user-select: none;
-		-webkit-user-select: none;
-		-ms-user-select: none;
-	}
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
 	</style>
 </head>
 
 <body>
-    <div class="header">
-        <div class="container">
-          <h1 class="titulo">Mobility<span class="span"> Solution</span></h1>
-          <div class="nav">
-            <ul>
-              <li><a class="ativo" href="home.html">Home</a></li>
-              <li><a href="cadastroEmpresa.html">Cadastrar Empresa</a></li>
-              <li><a class="ativo" href="cadastro.html">Cadastrar Usuário</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+	<div class="header">
+		<div class="container">
+			<h1 class="titulo">Mobility<span class="span"> Solution</span></h1>
+			<div class="nav">
+				<ul>
+					<li><a class="ativo" href="home.html">Home</a></li>
+					<li><a href="cadastroEmpresa.html">Cadastrar Empresa</a></li>
+					<li><a class="ativo" href="cadastro.html">Cadastrar Usuário</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div style="width:75%;">
 		<canvas id="c_grafico"></canvas>
 	</div>
@@ -90,7 +90,7 @@
 	function sortearTemperatura() {
 		var limiteMin = 0;
 		var limiteMax = 1;
-		return parseInt (Math.random() *2);
+		return parseInt(Math.random() * 2);
 	}
 
 	function recuperarDadosIniciais() {
@@ -141,28 +141,28 @@
 
 	function receberNovasLeituras() {
 		setTimeout(() => {
-			
+
 			// esses "agora" etc até "momentos" serão desnecessários quando usarmos o backend futuramente
 			var agora = new Date();
 			var hora = agora.getHours();
 			var minuto = agora.getMinutes();
 			var segundo = agora.getSeconds();
-			var momento = `${hora>9?'':'0'}${hora}:${minuto>9?'':'0'}${minuto}:${segundo>9?'':'0'}${segundo}`;
+			var momento = `${hora > 9 ? '' : '0'}${hora}:${minuto > 9 ? '' : '0'}${minuto}:${segundo > 9 ? '' : '0'}${segundo}`;
 
 			// esse "novoRegistro" será recuperado do backend futuramente
 			var novoRegistro = {
 				momento: momento,
 				leitura: sortearTemperatura()
 			};
-			
+
 			config.data.labels.shift(); // apagar o primeiro
 			config.data.labels.push(novoRegistro.momento); // incluir um novo momento
 			config.data.datasets[0].data.shift();  // apagar o primeiro
 			config.data.datasets[0].data.push(novoRegistro.leitura); // incluir uma nova leitura
 
-			window.myLine.update();	
+			window.myLine.update();
 
-			receberNovasLeituras();	
+			receberNovasLeituras();
 
 		}, 5000); // 5000 ms -> 5 segundos
 	}

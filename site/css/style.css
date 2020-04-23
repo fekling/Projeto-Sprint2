@@ -2,7 +2,7 @@ html{
     scroll-behavior: smooth;
 }
 body{
-    margin: 0;  
+    margin: 0;
 }
 #menu ul{
     margin: 0;
@@ -63,12 +63,14 @@ body{
 
 .servicos{
     display: inline-block;
-    width: 31.8%;
+    width: 30%;
     height: 580px;
-}
-#mobile{
     text-align: center;
     margin-left: 10px;
+    text-align: center;
+}
+#mobile{
+   
     background-image: url('../img/floresta.jpg');
     background-size: cover;
     background-position: center;
@@ -83,16 +85,12 @@ body{
     background-color: rgba(54, 62, 80, 0.75);
 }
 #web{
-    text-align: center;
-    margin-left: 10px;
     background-image: url('../img/floresta.jpg');
     background-size: cover;
     background-position: center;
     
 }
 #design{
-    text-align: center;
-    margin-left: 10px;
     background-image: url('../img/floresta.jpg');
     background-size: cover;
     background-position: center;
@@ -176,7 +174,7 @@ body{
 .inputcontato{
     margin-top: 10px;
     margin-left: 30px;
-    width: 550px;
+    width: 40%;
     height: 60px;
     padding: 10px;
     border-radius: 5px;
@@ -184,12 +182,13 @@ body{
 }
 .textArea{
     float: right;
-    margin-right: 4%;
-    margin-top: -535px;
-    width: 580px;
+    margin-right: 2%;
+    margin-top: -560px;
+    width: 45%;
     height: 270px;
     border-radius: 5px;
     color: rgba(54, 62, 80, 0.75);
+    margin-left: 40px;
     
 }
 .contato{
@@ -198,6 +197,7 @@ body{
     background-color: #363e50;
     margin-top: 10px;
     padding-top: 40px;
+    margin-bottom: 20px;
     
 }
 .btnMsg{
@@ -219,8 +219,9 @@ body{
     cursor: pointer;
 }
 .redes{
+    padding: 0;
+    margin: 0;
     width: 100%;
-    padding-left: 1000px;
 }
 .redes ul li{
     text-decoration: none;
@@ -238,149 +239,4 @@ footer{
     width: 100%;
     margin-top: -35px;
     height: 50px;
-}
-
-@media (min-width: 1000px) and (max-width: 1200px){
-    #primeiraImg{
-        width: 100%;
-        height: 650px;
-        background-position: center;
-    }
-    #menu ul li{
-        padding-top: 10px;
-
-    }
-    #menu ul li a{
-        padding: 10px 20px;
-    }
-    .servicos{
-        width: 28%;
-        height: 500px;
-    }
-    #mobile{
-        margin-left: 40px;
-    }
-    #web{
-        margin-left: 40px;
-    }
-    #design{
-        margin-left: 40px;
-    }
-    .h4{
-        color: #ffffff;
-        font: 22px "Source Sans Pro";
-        margin: 25px 20px;
-        padding-top: 0px;
-    }
-    .equipe{
-        text-align: left;
-        width: 100px;
-    }
-    .img{
-        width: 100px;
-    }
-    .texto{
-        font-size: 18px;
-        text-align: center;
-    }
-    .inputcontato{
-        width: 350px;
-        height: 60px;
-    }
-    .textArea{
-        font-size: 15px;
-        width: 400px;
-        height: 260px;
-    }
-}
-
-@media (min-width: 800px) and (max-width: 999px){
-    #primeiraImg{
-        width: 100%;
-        background-position: center;
-    }
-    #menu ul li a{
-        padding: 10px 10px;
-    }
-    .servicos{
-        width: 27%;
-        height: 500px;
-    }
-    #mobile{
-        margin-left: 18px;
-    }
-    #web{
-        margin-left: 18px;
-    }
-    #design{
-        margin-left: 18px;
-    }
-    .h4{
-        color: #ffffff;
-        font: 20px "Source Sans Pro";
-        margin: 25px 20px;
-        padding-top: 0px;
-    }
-    .equipe{
-        text-align: center;
-        width: 50px;
-    }
-    .img{
-        width: 80px;
-    }
-    .texto{
-        font-size: 15px;
-        text-align: center;
-    }
-    .inputcontato{
-        width: 350px;
-        height: 60px;
-    }
-    .textArea{
-        width: 350px;
-        height: 400px;
-    }
-}
-@media (min-width: 500px) and (max-width: 799px){
-    
-    #menu ul li a{
-        padding: 10px 0px;
-        font-size: 15px;
-    }
-    .servicos{
-        width: 33%;
-        height: 500px;
-    }
-    #mobile{
-        margin-left: 15px;
-    }
-    #web{
-        margin-left: 15px;
-    }
-    #design{
-        margin-left: 18px;
-    }
-    .h4{
-        margin: 15px 10px;
-    
-    }
-    .equipe{
-        text-align: center;
-        width: 50px;
-    }
-    .img{
-        width: 80px;
-    }
-    .texto{
-        font-size: 15px;
-        text-align: center;
-    }
-    .inputcontato{
-        width: 350px;
-        height: 60px;
-    }
-    .textArea{
-        width: 350px;
-        height: 400px;
-    }
 }

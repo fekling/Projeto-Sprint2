@@ -32,7 +32,7 @@
     font-size: 25px;
   }
 .container{
-    widows: 90%;
+    width: 90%;
     margin:auto;
     overflow: hidden;
 }

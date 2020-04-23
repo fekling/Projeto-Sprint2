@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="css/sistema.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
+
 <body class="body">
     <div class="telaLogin">
         <img src="img/iconeUsuario.jpg" class="usuario" alt=""><br>
         <input id="email" class="login" placeholder="Digite seu Login" autofocus id="email"><br>
-        <input  id="senha1" class="login" placeholder="Digite sua Senha" id="senha"><br>
+        <input id="senha1" class="login" placeholder="Digite sua Senha" id="senha"><br>
         <button id="logar" class="btnLogar" onclick="validarLogin()">Entrar</button>
     </div>
 </body>
+
 </html>
 <script>
-    function validarLogin(){
+    function validarLogin() {
         var login = email.value;
         var senha = senha1.value;
         window.location.href = "home.html";
