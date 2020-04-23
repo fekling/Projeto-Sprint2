@@ -26,13 +26,11 @@ body{
     text-decoration: none;
     font-size: 18px;
 }
-#menu ul li  .nomeEmpresa{
-    margin-left: -250px;
-    font-size: 25px;
-    margin-top: -5px;
-}
-.nome{
-    color: orange;
+#menu ul li  .logoEmpresa{
+    margin-left: -200px;
+    border-radius: 99px;
+    margin-top: -35px;
+    width: 90px;
     
 }
 #menu ul li .nomeEmpresa:hover{
@@ -49,8 +47,9 @@ body{
 #primeiraImg{
     text-align: center;
     margin-top: -20px;
-    background-image: url("../img/fundoHome.jpg");
+    background-image: url("../img/fundoTecnologico.jpg");
     background-size: cover; 
+    background-attachment: fixed;
     height: 650px;
     background-position: center;
 }
