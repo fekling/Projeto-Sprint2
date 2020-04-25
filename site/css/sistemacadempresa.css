@@ -1,4 +1,4 @@
-.body{
+﻿.body{
     background-image: url('../img/fundo.jpg');
     background-size: cover;
     background-attachment: fixed;
@@ -216,7 +216,7 @@
     color: orange;
 }
 #menu{
-    margin: 0px 0px -331px 750px;
+    margin: 0px 0px -265px 750px
 }
 
 .tudo{
