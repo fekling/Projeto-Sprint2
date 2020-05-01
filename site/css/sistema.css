@@ -17,6 +17,7 @@
   .header .container {
     min-height: 70px;
     padding: 10px;
+    
   }
   /*  FIM   */
   
@@ -37,6 +38,7 @@
     widows: 90%;
     margin:auto;
     overflow: hidden;
+    
 }
 
 .nav ul li {
@@ -69,6 +71,7 @@
     widows: 90%;
     margin:auto;
     overflow: hidden;
+    
 }
 .telaLogin{
     text-align: center;
@@ -203,4 +206,9 @@
 .h2{
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+}.loginbox{
+    margin: auto;
+    width: 30%;
+    
+    padding: 10px;
 }

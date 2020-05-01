@@ -27,13 +27,11 @@ body{
     font-size: 18px;
 }
 #menu ul li  .logoEmpresa{
-    margin-left: -274px;
+    margin-left: -400px;
     border-radius: 93px;
     margin-top: -28px;
-    width: 165px;
+    width: 200px;
 }
-    
-
 #menu ul li .nomeEmpresa:hover{
     color: white;
 }
@@ -48,7 +46,7 @@ body{
 #primeiraImg{
     text-align: center;
     margin-top: -20px;
-    background-image: url("../img/1.jpg");
+    background-image: url("../img/4.jpg");
     background-size: cover; 
     background-attachment: fixed;
     height: 650px;
@@ -57,9 +55,9 @@ body{
 
 .slogan{
     color: white;
-    padding: 30% 30px;
-    margin: 0 auto;
-    font-size: 20px;
+    padding: 23% 140px;
+    margin: 5px auto;
+    font-size: 28px;
 }
 
 .servicos{
@@ -69,12 +67,14 @@ body{
     text-align: center;
     margin-left: 10px;
     text-align: center;
+    background-position: 50%;
 }
 #mobile{
    
     background-image: url('../img/floresta.jpg');
     background-size: cover;
     background-position: center;
+    margin-left: 4%;
     
 }
 #fundoRoza{
@@ -196,7 +196,6 @@ body{
     background-image: url("../img/rodape.png");
     height: 700px;
     background-color: #363e50;
-    margin-top: 10px;
     padding-top: 40px;
     margin-bottom: 20px;
     
@@ -240,4 +239,7 @@ footer{
     width: 100%;
     margin-top: -35px;
     height: 50px;
+}
+.fundott{
+    background-image: url("../img/zz.jpg")  ;  
 }
