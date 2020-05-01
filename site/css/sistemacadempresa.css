@@ -1,17 +1,19 @@
-﻿.body{
+﻿body{
+    margin: 0;
+    padding: 0;
+}
+
+.body{
     background-image: url('../img/fundo.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
 }
 .header {
-    background-color: #232323;
+    background-color: #232323ef;
     width: 100%;
     margin-bottom: 50px;
-    border-bottom: orange 5px solid; /* estou colocando uma bordar na parte de baixo
-    do meu header com tamanho de 5px e de estilo solid */
-    margin: 0px;
-    padding: 0;
+    border-bottom: orange 5px solid
 
   }
   
@@ -220,7 +222,7 @@
 }
 
 .tudo{
-    background-image: url('../img/1.jpg');
+    background-image: url('../img/tey.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;

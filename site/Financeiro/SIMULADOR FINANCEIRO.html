@@ -13,8 +13,11 @@
 
 <body>
     <div class="tudo">
-        <div class="login">
+            <div class="loginbox">
+                    <img src="img/logono.png" class="avatar">
+        <div class="login"></div>
             <div class="div_form">
+            
                 <form>
                     <input type="number" id="busão" autofocus placeholder="Quantidade de Onibus" class="inputFinanceiro"
                         min="0">
@@ -27,6 +30,8 @@
             </div>
             <div id="div_mensagem" class="div_mensagem"></div>
         </div>
+        </div>
+    </div>
     </div>
 
 </body>
@@ -36,16 +41,17 @@
     function Simular() {
         var temp = Number(tempo.value);
         var qtdOnibus = Number(busão.value);
+        var div = (temp /2 *qtdOnibus);
         var pagamento = (temp * qtdOnibus);
         var pagardesc = 0;
 
         if (temp > 0 && qtdOnibus > 0) {
             if (temp >= 12) {
-                pagardesc = pagamento * 350;
+                pagardesc = div * 150;
                 div_mensagem.innerHTML = `<p>O valor total será de R$:${pagardesc.toFixed(2)} Com Desconto </p>`
             }
             else {
-                pagardesc = pagamento * 400;
+                pagardesc = div * 250;
                 div_mensagem.innerHTML = `<p>O valor total será de R$:${pagardesc.toFixed(2)}</p>`
             }
             div_mensagem.style.color = 'white';
