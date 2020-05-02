@@ -26,12 +26,17 @@ body{
     text-decoration: none;
     font-size: 23px;
 }
-#menu ul li  .logoEmpresa{
-    margin-left: -297px;
-    border-radius: 52px;
-    margin-top: 9px;
-    width: 200px;
+.logoMenu{
+    float: left;
+    width: 30%;
 }
+.logoMenu .logoEmpresa{
+    margin-left: 40%;
+    border-radius: 99px;
+    margin-top: -5px;
+    width: 90px;
+}
+
 #menu ul li .nomeEmpresa:hover{
     color: white;
 }

@@ -19,21 +19,27 @@
 <body>
 	<div class="header">
 		<div class="container">
-			<h1 class="titulo">Mobility<span class="span"> Solution</span></h1>
+			<h1 class="titulo"> Mobility<span class="span"> Solution</span></h1>
 			<div class="nav">
 				<ul>
-					<li><a class="ativo" href="home.html">Dashboard</a></li>
+					<li><a class="ativo" href="home.html">Home</a></li>
 					<li><a href="cadastroEmpresa.html">Cadastrar Empresa</a></li>
 					<li><a class="ativo" href="cadastro.html">Cadastrar Usuário</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<div style="width:75%;">
+	<div class="grafico">
 		<canvas id="c_grafico"></canvas>
 	</div>
-	<br>
-	<br>
+	<div class="grafico">
+		<canvas id="c_grafico2"></canvas>
+		<img src="img/alertaRisco.png" alt="" class="alertaRisco">
+	</div>
+	<footer>
+		<p>Compartilhe O Sistema</p>
+	</footer>
+
 
 </body>
 
@@ -79,18 +85,69 @@
 					display: true,
 					scaleLabel: {
 						display: true,
-						labelString: 'Fluxo de pessoas'
+						labelString: '0 = Não Tem         1 = Passou Pessoa'
+					}
+				}]
+			}
+		}
+	};
+	var config2 = {
+		type: 'bar',
+		data: {
+			labels: [],
+			datasets: [{
+				label: 'Media',
+				backgroundColor: window.chartColors.orange,
+				borderColor: window.chartColors.orange,
+				data: [],
+				fill: false,
+			}]
+		},
+		options: {
+			responsive: true,
+			title: {
+				display: true,
+				text: 'Gráfico de Média de Pessoas'
+			},
+			tooltips: {
+				mode: 'index',
+				intersect: false,
+			},
+			hover: {
+				mode: 'nearest',
+				intersect: true
+			},
+			scales: {
+				xAxes: [{
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Horário da Leitura'
+					}
+				}],
+				yAxes: [{
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Quantidade Pessoas'
 					}
 				}]
 			}
 		}
 	};
 
+
+
 	// esse "sortearTemperatura()" será desnecessário quando usarmos o backend futuramente
 	function sortearTemperatura() {
 		var limiteMin = 0;
 		var limiteMax = 1;
 		return parseInt(Math.random() * 2);
+	}
+	function sortearMedia() {
+		var limiteMin = 1;
+		var limiteMax = 40;
+		return parseInt(Math.random() * 40);
 	}
 
 	function recuperarDadosIniciais() {
@@ -126,8 +183,40 @@
 				leitura: sortearTemperatura()
 			}
 		];
+		var registros2 = [
+			{
+				momento: '00:01:45',
+				leitura: sortearMedia()
+			},
+			{
+				momento: '00:02:45',
+				leitura: sortearMedia()
+			},
+			{
+				momento: '00:03:45',
+				leitura: sortearMedia()
+			},
+			{
+				momento: '00:04:45',
+				leitura: sortearMedia()
+			},
+			{
+				momento: '00:05:45',
+				leitura: sortearMedia()
+			},
+			{
+				momento: '00:06:45',
+				leitura: sortearMedia()
+			},
+			{
+				momento: '00:07:45',
+				leitura: sortearMedia()
+			}
+		];
+
 
 		var contador = 0;
+		var contador2 = 0;
 
 		while (contador < registros.length) {
 
@@ -137,6 +226,13 @@
 			contador++;
 		}
 
+		while (contador2 < registros2.length) {
+
+			config2.data.labels.push(registros2[contador2].momento);  // incluir um novo momento
+			config2.data.datasets[0].data.push(registros2[contador2].leitura);  // incluir uma nova leitura
+
+			contador2++;
+		}
 	}
 
 	function receberNovasLeituras() {
@@ -159,12 +255,40 @@
 			config.data.labels.push(novoRegistro.momento); // incluir um novo momento
 			config.data.datasets[0].data.shift();  // apagar o primeiro
 			config.data.datasets[0].data.push(novoRegistro.leitura); // incluir uma nova leitura
-
 			window.myLine.update();
+			
 
 			receberNovasLeituras();
 
-		}, 5000); // 5000 ms -> 5 segundos
+		}, 1000); // 5000 ms -> 5 segundos
+	}
+	function receberNovasLeituras2() {
+		setTimeout(() => {
+
+			// esses "agora" etc até "momentos" serão desnecessários quando usarmos o backend futuramente
+			var agora = new Date();
+			var hora = agora.getHours();
+			var minuto = agora.getMinutes();
+			var segundo = agora.getSeconds();
+			var momento = `${hora > 9 ? '' : '0'}${hora}:${minuto > 9 ? '' : '0'}${minuto}:${segundo > 9 ? '' : '0'}${segundo}`;
+
+			// esse "novoRegistro" será recuperado do backend futuramente
+		
+			var novoRegistro2 = {
+				momento: momento,
+				leitura: sortearMedia()
+			};
+
+			config2.data.labels.shift(); // apagar o primeiro
+			config2.data.labels.push(novoRegistro2.momento); // incluir um novo momento
+			config2.data.datasets[0].data.shift();  // apagar o primeiro
+			config2.data.datasets[0].data.push(novoRegistro2.leitura); // incluir uma nova leitura
+			window.myLine2.update();
+			
+
+			receberNovasLeituras2();
+
+		}, 7000); // 5000 ms -> 5 segundos
 	}
 
 	function plotarGrafico() {
@@ -173,7 +297,11 @@
 		var ctx = document.getElementById('c_grafico').getContext('2d');
 		window.myLine = new Chart(ctx, config);
 
+		var ctx2 = document.getElementById('c_grafico2').getContext('2d');
+		window.myLine2 = new Chart(ctx2, config2);
+
 		receberNovasLeituras();
+		receberNovasLeituras2();
 	}
 
 	window.onload = plotarGrafico;
