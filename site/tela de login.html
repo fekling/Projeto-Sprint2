@@ -1,7 +1,7 @@
 <html>
 <head>
-<title>Login Form Design</title>
-    <link rel="stylesheet" type="text/css" href="css/tela de login.css">
+<title>Mobility Solutions Login</title>
+    <link rel="stylesheet" type="text/css" href="css/teladelogin.css">
 <body>
         <img src="img/logono.png" class="logo">
     <div class="loginbox">
@@ -13,7 +13,7 @@
             <input type="text" name="" placeholder="Login" id="email">
             <p>Senha</p>
             <input type="password" name="" placeholder="Senha" id="senha1">
-            <input type="submit" name="" value="Login" >
+            <input type="submit" name="" value="Login" onclick="validarLogin()">
         </form>
     </div>
 
@@ -22,9 +22,6 @@
 </html>
 <script>
         function validarLogin() {
-            var login = email.value;
-            var senha = senha1.value;
-            window.location.href = "home.html";
-            
+            window.open('home.html')
         }
     </script>

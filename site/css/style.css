@@ -20,16 +20,16 @@ body{
 
 
 #menu ul li a{
-    padding: 5px 30px;
+    padding: 4px 36px;
     display: inline-block;
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 23px;
 }
 #menu ul li  .logoEmpresa{
-    margin-left: -400px;
-    border-radius: 93px;
-    margin-top: -28px;
+    margin-left: -297px;
+    border-radius: 52px;
+    margin-top: 9px;
     width: 200px;
 }
 #menu ul li .nomeEmpresa:hover{
@@ -46,7 +46,7 @@ body{
 #primeiraImg{
     text-align: center;
     margin-top: -20px;
-    background-image: url("../img/4.jpg");
+    background-image: url("../img/4.3.jpg");
     background-size: cover; 
     background-attachment: fixed;
     height: 650px;
@@ -55,9 +55,10 @@ body{
 
 .slogan{
     color: white;
-    padding: 23% 140px;
+    padding: 19% 140px;
     margin: 5px auto;
-    font-size: 28px;
+    font-size: 50px;
+    font-family: sans-serif;
 }
 
 .servicos{
@@ -68,6 +69,7 @@ body{
     margin-left: 10px;
     text-align: center;
     background-position: 50%;
+    margin: 0;
 }
 #mobile{
    
@@ -105,24 +107,24 @@ body{
 }
 .h4{
     color: #ffffff;
-    font: 22px "Source Sans Pro";
+    font: 22px "sans-serif";
     margin: 45px 40px;
     padding-top: 0px;
 }
 .p{
     color: #ffffff;
-    font: 16px "Source Sans Pro", "sans-serif" ;
+    font: 16px "sans-serif" ;
     padding: 10px 5px;
     
 }
 .h4port{
     color: #ffffff;
-    font: 28px "Source Sans Pro", "sans-serif";
+    font: 28px "sans-serif";
     margin: 0px 10px;
 }
 .pport{
     color: #AAAAAA;
-    font: 18px "Source Sans Pro", "sans-serif";
+    font: 18px "sans-serif";
     margin: 0px 10px;
     padding: 0px 72.5px;
 }
