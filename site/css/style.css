@@ -20,7 +20,7 @@ body{
 
 
 #menu ul li a{
-    padding: 4px 36px;
+    padding: 45px 36px;
     display: inline-block;
     color: white;
     text-decoration: none;
@@ -34,7 +34,7 @@ body{
     margin-left: 40%;
     border-radius: 99px;
     margin-top: -5px;
-    width: 90px;
+    width: 200px;
 }
 
 #menu ul li .nomeEmpresa:hover{
