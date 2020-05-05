@@ -5,17 +5,15 @@ body{
     margin: 0;
 }
 #menu ul{
-    margin: 0;
+    margin: -20px 0px 0px 0px;
     background-color: transparent;
     width: 100%;
     position: fixed;
     height: 70px;
-    padding-top: 10px;
 }
 #menu ul li{
     display: inline;
     float: right;
-    
 }
 
 
@@ -50,11 +48,11 @@ body{
 
 #primeiraImg{
     text-align: center;
-    margin-top: -20px;
+    margin-top: 0px;
     background-image: url("../img/4.3.jpg");
     background-size: cover; 
     background-attachment: fixed;
-    height: 650px;
+    height: 697px;
     background-position: center;
 }
 
@@ -76,35 +74,15 @@ body{
     background-position: 50%;
     margin: 0;
 }
-#mobile{
+#direita{
    
-    background-image: url('../img/floresta.jpg');
-    background-size: cover;
-    background-position: center;
-    margin-left: 4%;
-    
-}
-#fundoRoza{
-    height: 100%;
     background-color: rgba(242, 117, 95, 0.582); ;
 }
-#fundoPreto{
-    height: 100%;
+#center{
+   
     background-color: rgba(54, 62, 80, 0.75);
 }
-#web{
-    background-image: url('../img/floresta.jpg');
-    background-size: cover;
-    background-position: center;
-    
-}
-#design{
-    background-image: url('../img/floresta.jpg');
-    background-size: cover;
-    background-position: center;
-}
-#fundoAzul{
-    height: 100%;
+#esquerda{
     background-color: rgba(70, 187, 226, 0.589);
 }
 .imgIcon{
@@ -141,7 +119,7 @@ body{
     height: 600px;
 }
 #equipe{
-    padding-top: 10px;
+    padding-top: 1px;
     color: #ffffff;
     font-size: 25px;
     background-color: #363e50;
@@ -200,6 +178,7 @@ body{
     
 }
 .contato{
+    background-color: transparent;
     background-image: url("../img/rodape.png");
     height: 700px;
     background-color: #363e50;
@@ -236,7 +215,7 @@ body{
 }
 .redes ul li a {
     padding-top: -100px;
-    text-align:  right 
+    text-align:  right ;
 }
 .redes ul li a img {
     margin-right: 20px;
@@ -246,7 +225,64 @@ footer{
     width: 100%;
     margin-top: -35px;
     height: 50px;
+    background-color: #363e50;
 }
 .fundott{
-    background-image: url("../img/zz.jpg")  ;  
+    margin-top: -40px;
+    height: 650px;
+   background-color: #363e50;
+   color: white;
+   font-size: 20px;
+   
 }
+.cd{
+    background-image: url(../img/azulc.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 28%;
+    height: 78%;
+    float: right;
+    margin-right: 30px;
+    margin-top: 143px;
+    text-align: center;
+    
+   
+}
+.ce{
+    background-image: url(../img/verde.jfif);
+    background-size: cover;
+    background-position: center;
+    width: 28%;
+    height: 78%;
+    float: left;
+    margin-left: 30px;
+    margin-top: 143px;
+    text-align: center;
+   
+}
+.cc{
+    background-image: url(../img/marsala.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 28%;
+    height: 78%;
+    float: right;
+    margin-right: 75px;
+    margin-top: 143px;  
+    text-align: center;
+}
+.esp{
+    color: white;
+    border-bottom: white 3px solid;
+
+}
+.tt{
+    padding: 70px 0px 0px 0px;
+    
+}
+#id3{
+    color: white;
+    font-size: 21px;
+}
+
+
