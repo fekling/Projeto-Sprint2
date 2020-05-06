@@ -41,17 +41,17 @@
     function Simular() {
         var temp = Number(tempo.value);
         var qtdOnibus = Number(busão.value);
-        var div = (temp /2 *qtdOnibus);
+        var mes = (temp /2) *qtdOnibus;
         var pagamento = (temp * qtdOnibus);
         var pagardesc = 0;
 
         if (temp > 0 && qtdOnibus > 0) {
             if (temp >= 12) {
-                pagardesc = div * 150;
+                pagardesc = mes * 150;
                 div_mensagem.innerHTML = `<p>O valor total será de R$:${pagardesc.toFixed(2)} Com Desconto </p>`
             }
             else {
-                pagardesc = div * 250;
+                pagardesc = mes * 250;
                 div_mensagem.innerHTML = `<p>O valor total será de R$:${pagardesc.toFixed(2)}</p>`
             }
             div_mensagem.style.color = 'white';
