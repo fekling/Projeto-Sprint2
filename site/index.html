@@ -13,43 +13,45 @@
     <div class="logoMenu">
       <img src="img/logono.png" alt="" class="logoEmpresa">
     </div>
-    <div id="menu">
+    <div class="menu">
         <ul>
             <li><a href="tela de login.html" class="projeto">Sistema</a></li>
             <li><a href="Financeiro/SIMULADOR FINANCEIRO.html">Simulador Financeiro</a></li>
             <li><a href="#contato">Contato</a></li>
             <li><a href="#equipe">Equipe</a></li>
-            <li><a href="#coluna">Quem Somos</a></li>
+            <li><a href="#servicos">Quem Somos</a></li>
         </ul>
     </div>
 
 
-    <div id="primeiraImg"></div>
+    <div id="primeiraImg" class="primeiraImg"></div>
 
 
-       <div class="fundott" id="coluna">
+       <div class="fundott" id="servicos">
            
-       <div id="direita" class="cd">
-          
-        <img src="img/engrenagem.png" class="tt" >
-           <h1>Valores</h1>
-           <b style="color: white" > A Nossa empresa busca os melhores resultados agindo com 
-                transparência para o nosso cliente trazendo inovações usando tecnologia ao nosso
-                 favor para melhorar o dia a dia das pessoas e trazendo para si comentários melhores!</b>
-       </div>
+            <div class="cd">
+                
+                <img src="img/engrenagem.png" class="tt" >
+                <h1>Valores</h1>
+                <b style="color: white" > A Nossa empresa busca os melhores resultados agindo com 
+                        transparência para o nosso cliente trazendo inovações usando tecnologia ao nosso
+                        favor para melhorar o dia a dia das pessoas e trazendo para si comentários melhores!</b>
+            </div>
 
-       <div id="center" class="cc">
-            <img src="img/engrenagem.png" class="tt" >
-            <h1>Missão</h1>
-        <b style="color: white">A Nossa empresa tem como o objetivo de melhorar o conforto das pessoas ao embarcar
-                em transportes públicos nos horários de maior concentração.</b></div>
-
-       <div id="esquerda" class="ce">
-            <img src="img/engrenagem.png" class="tt">
-            <h1>Visão</h1>
-        <b style="color: white">No Brasil o transporte publico corresponde a 80% do 
-                deslocamentos da sociedade em si, onde pessoas reclamam sobre superlotação de algumas linhas e 
-                vias, trabalhamos com fluxo de concentração pessoas com intenção de amenizar esse problema.</b></div>
+            <div  class="ce">
+                <img src="img/engrenagem.png" class="tt" >
+                <h1>Missão</h1>
+                <b style="color: white">A Nossa empresa tem como o objetivo de melhorar o conforto das pessoas ao embarcar
+                        em transportes públicos nos horários de maior concentração.</b>
+            </div>
+                    
+            <div class="cc">
+                <img src="img/engrenagem.png" class="tt">
+                <h1>Visão</h1>
+                <b style="color: white">No Brasil o transporte publico corresponde a 80% do 
+                        deslocamentos da sociedade em si, onde pessoas reclamam sobre superlotação de algumas linhas e 
+                        vias, trabalhamos com fluxo de concentração pessoas com intenção de amenizar esse problema.</b>
+            </div>
 
        </div>
     
@@ -57,7 +59,7 @@
 
        <div id="espaco" class="esp"></div>
 
-    <div id="equipe">
+    <div id="equipe" class="div_equipe">
         <h4 style="padding-top: 40px;">Equipe</h4>
 
         <div class="equipe">
@@ -93,40 +95,35 @@
             <p class="test">Programador</p>
         </div>
     </div>
-
-    <div id="espaco" class="esp"></div>
-
     <div class="contato" id="contato">
-        <h4 class="h4form">Contato</h4>
-        <p class="pform">Preencha o Formulário abaixo</p><br>
-        <input type="text" placeholder="Seu Nome" class="inputcontato">
-        <br>
-        <input type="email" placeholder="Seu Email" class="inputcontato">
-        <br>
-        <input type="text" placeholder="Seu Telefone" class="inputcontato">
-        <br><br><br><br>
-        <div class="btnMsg">
-            <button class="msg" type="submit">Enviar mensagem</button>
-
+        <div class="testoContato">
+            <h1>Contato</h1>
+        <h2>Preencha o Formulário abaixo</h2>
         </div>
-
+        <div class="formaContato">
+            <input type="text" class="inputContato" placeholder="Nome">
+            <input type="text" class="inputContato" placeholder="E-mail">
+            <input type="text" class="inputContato" placeholder="Telefone">
+        </div>
+        <div class="mensagemContato">
+            <textarea class="txtArea" placeholder="Feedback"></textarea>
+        </div>
+        <button class="btnContato" onclick="inicio()">Enviar</button>
     </div>
-    
-    <div>
-        <textarea placeholder="Digite sua Mensagem" class="textArea"></textarea>
-    </div>
-    <footer>
+    <footer class="footer">
         <div class="redes">
-            
             <ul>
-                <li><a href="" target="_blank"><img src="img/redesSociais/facebook.png" alt="Perfil do Facebook"></a>
-                </li>
-                <li><a href="" target="_blank"><img src="img/redesSociais/google.png" alt="Email"></a></li>
-                <li><a href="" target="_blank"><img src="img/redesSociais/instagram.png" alt="Peril Instagram"></a></li>
-                <li><a href="" target="_blank"><img src="img/redesSociais/twitter.png" alt="Perfil twitter"></a></li>
-
+                <li><a href="https://www.facebook.com/" target="_blank"><img src="img/redesSociais/facebook.png" alt="Perfil do Facebook"></a>
+				</li>
+				<li><a href="https://web.whatsapp.com/" target="_blank"><img src="img/redesSociais/whatzapp.jpg" alt="Perfil whatsapp"></a></li>
+                <li><a href="https://mail.google.com/mail/u/0/" target="_blank"><img src="img/redesSociais/google.png" alt="Email"></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank"><img src="img/redesSociais/instagram.png" alt="Peril Instagram"></a></li>
+                <li><a href="https://twitter.com/login?lang=pt" target="_blank"><img src="img/redesSociais/twitter.png" alt="Perfil twitter"></a></li>
             </ul>
         </div>
+		<div class="conteudofooter">Email: game.zinho@bandtec.com.br <br><br> Localização: Hadock Lobo N° 595 </div>
+        <hr><p class="txt">Compartilhe em suas redes Sociais</p><hr>
+                
     </footer>
 </body>
 

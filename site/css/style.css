@@ -4,20 +4,20 @@ html{
 body{
     margin: 0;
 }
-#menu ul{
+.menu ul{
     margin: -20px 0px 0px 0px;
     background-color: transparent;
     width: 100%;
     position: fixed;
     height: 70px;
 }
-#menu ul li{
+.menu ul li{
     display: inline;
     float: right;
 }
 
 
-#menu ul li a{
+.menu ul li a{
     padding: 45px 36px;
     display: inline-block;
     color: white;
@@ -35,18 +35,18 @@ body{
     width: 200px;
 }
 
-#menu ul li .nomeEmpresa:hover{
+.menu ul li .nomeEmpresa:hover{
     color: white;
 }
 
 .projeto{
     margin-right: 50px;
 }
-#menu ul li a:hover{
+.menu ul li a:hover{
     color: blue;
 }
 
-#primeiraImg{
+.primeiraImg{
     text-align: center;
     margin-top: 0px;
     background-image: url("../img/4.3.jpg");
@@ -74,17 +74,7 @@ body{
     background-position: 50%;
     margin: 0;
 }
-#direita{
-   
-    background-color: rgba(242, 117, 95, 0.582); ;
-}
-#center{
-   
-    background-color: rgba(54, 62, 80, 0.75);
-}
-#esquerda{
-    background-color: rgba(70, 187, 226, 0.589);
-}
+
 .imgIcon{
     padding-top: 30px;
 }
@@ -100,30 +90,14 @@ body{
     padding: 10px 5px;
     
 }
-.h4port{
-    color: #ffffff;
-    font: 28px "sans-serif";
-    margin: 0px 10px;
-}
-.pport{
-    color: #AAAAAA;
-    font: 18px "sans-serif";
-    margin: 0px 10px;
-    padding: 0px 72.5px;
-}
-.portifolio{
-    margin-top: 10px;
-    text-align: center;
-    background-color: #363e50;
-    padding-top: 40px;
-    height: 600px;
-}
-#equipe{
+
+.div_equipe{
     padding-top: 1px;
     color: #ffffff;
     font-size: 25px;
     background-color: #363e50;
     text-align: center;
+    border-bottom: 2px solid white;
 }
 .img{
     width: 100px;
@@ -146,51 +120,53 @@ body{
     color: white;
     text-align: center;
 }
-.h4form{
-    color: #ffffff;
-    text-align: center;
-    font-family: sans-serif;
-    font-size: 30px;
-}
-.pform{
-    text-align: center;
-    color: #ffffff;
-    font-family: sans-serif;
-    font-size: 18px;
-}
-.inputcontato{
-    margin-top: 10px;
-    margin-left: 30px;
-    width: 40%;
-    height: 60px;
-    padding: 10px;
-    border-radius: 5px;
-    color: rgba(54, 62, 80, 0.75);
-}
-.textArea{
-    float: right;
-    margin-right: 2%;
-    margin-top: -560px;
-    width: 45%;
-    height: 270px;
-    border-radius: 5px;
-    color: rgba(54, 62, 80, 0.75);
-    margin-left: 40px;
-    
-}
 .contato{
-    background-color: transparent;
     background-image: url("../img/rodape.png");
     height: 700px;
     background-color: #363e50;
     padding-top: 40px;
-    margin-bottom: 20px;
+    border-bottom: 2px solid white;
     
 }
-.btnMsg{
-    text-align: center;
+.inputContato{
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 85%;
+    height: 60px;
+    padding: 10px;
+    border-radius: 5px;
+    color: rgba(54, 62, 80, 0.75);
+    font-size: 16px;
 }
-.msg{
+.formaContato{
+    width: 45%;
+    margin-top: 20px;
+    float: left;
+}
+.testoContato{
+    padding-top: 40px;
+    text-align: center;
+    color: white;
+}
+.txtArea{
+    width: 90%;
+    height: 280px;
+    border-radius: 5px;
+    color: rgba(54, 62, 80, 0.75);
+    margin-right: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-top: 20px;
+    font-size: 16px;
+
+}
+.mensagemContato{
+    float: right;
+    width: 50%;
+    margin-top: 20px;
+}
+
+.btnContato{
     width: 120px;
     height: 50px;
     width: 200px;
@@ -199,34 +175,43 @@ body{
     border: 1px solid red;
     color: white;
     border-radius: 3px;
-    
+    margin-top: 40px;
+    margin-left: 39%;
 }
-.msg:hover{
-    background-color: #F31D1D;
+.btnContato:hover{
     cursor: pointer;
 }
-.redes{
-    padding: 0;
-    margin: 0;
+
+.conteudofooter{
+    color: white;
+    padding: 20px;
+    font-size: 16px;
+}
+.footer{
+    background-color: #363e50;
+    height: 200px;
     width: 100%;
+}
+.redes ul {
+    float: right;
+    margin-right: 20px;
 }
 .redes ul li{
     text-decoration: none;
     display: inline-block;
 }
 .redes ul li a {
-    padding-top: -100px;
-    text-align:  right ;
+    text-align:  right 
 }
 .redes ul li a img {
     margin-right: 20px;
     width: 25px;
 }
-footer{
-    width: 100%;
-    margin-top: -35px;
-    height: 50px;
-    background-color: #363e50;
+.txt{
+    color: white;
+    padding-right: 60px;
+    font-size: 18px;
+    text-align: center;
 }
 .fundott{
     margin-top: -40px;
@@ -237,7 +222,7 @@ footer{
    
 }
 .cd{
-    background-image: url(../img/azulc.jpg);
+    background-image: url('../img/azulc.jpg');
     background-size: cover;
     background-position: center;
     width: 28%;
@@ -250,7 +235,7 @@ footer{
    
 }
 .ce{
-    background-image: url(../img/verde.jfif);
+    background-image: url('../img/predio.webp');
     background-size: cover;
     background-position: center;
     width: 28%;
@@ -262,7 +247,7 @@ footer{
    
 }
 .cc{
-    background-image: url(../img/marsala.jpg);
+    background-image: url('../img/marsala.jpg');
     background-size: cover;
     background-position: center;
     width: 28%;
@@ -272,18 +257,3 @@ footer{
     margin-top: 143px;  
     text-align: center;
 }
-.esp{
-    color: white;
-    border-bottom: white 3px solid;
-
-}
-.tt{
-    padding: 70px 0px 0px 0px;
-    
-}
-#id3{
-    color: white;
-    font-size: 21px;
-}
-
-
