@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correção C2 - Tipo 2</title>
+</head>
+
+<body>
+
+    <h3>Sorteiro de figurinhas</h3>
+
+    <div id="div_placar">
+        Sorteiros: <b id="b_sorteios">0</b> <br>
+        Total gasto: R$<b id="b_gasto">0.00</b> <br>
+        Total de ganho: R$<b id="b_ganho">0.00</b>
+    </div>
+
+    <br>
+
+    Qual fruta você escolhe? <select id="escolhida">
+        <option value="1">Melancia</option>
+        <option value="2">Banana</option>
+        <option value="3">Cereja</option>
+        <option value="4">Laranja</option>
+    </select>
+
+    <button onclick="sortear()">
+        Pagar R$2,00 e Sortear
+    </button>
+
+    <br><br>
+    <div id="div_figurinhas">
+    </div>
+    
+    <br>
+    <div id="div_ultimo" style="display: none;">
+    No último jogo você ganhou R$<b id="b_ultimo"></b>
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+    var contagem = 0;
+    var ganho = 0;
+
+    function sortear() {
+
+        var valor_escolhida = Number(escolhida.value);
+
+        b_sorteios.innerHTML = ++contagem;
+        var total_gasto = contagem * 2;
+        b_gasto.innerHTML = total_gasto.toFixed(2);
+
+        div_figurinhas.innerHTML = "";
+
+        var sorteios = 0;
+        var acertos = 0;
+
+        while (sorteios < 4) {
+            sorteios++;           
+             
+            var sorteado = parseInt(Math.random() * 4 + 1);
+
+            div_figurinhas.innerHTML += `<img src="${sorteado}.png">`;
+
+            if (sorteado == valor_escolhida) {
+                acertos++;
+            }
+        } 
+        
+        var ganhou_agora;
+        if (acertos>0) {
+            if (acertos==1) {
+                ganhou_agora = 1.5;
+            } else if (acertos==2) {
+                ganhou_agora = 2 * 2.5;
+            } else if (acertos==3) {
+                ganhou_agora = 3 * 7;
+            } else {
+                ganhou_agora = 50;
+            }
+        } else {
+            ganhou_agora = 0;
+        }
+
+        ganho += ganhou_agora;
+
+        div_ultimo.style.display = 'block';
+        b_ultimo.innerHTML = ganhou_agora.toFixed(2);
+
+        b_ganho.innerHTML = ganho.toFixed(2);
+
+    }
+</script>
