@@ -6,8 +6,6 @@ create table Empresa(
     emailEmpresa varchar(30),
     inscricaoEstadual char(9),
     nomeResponsavel varchar(50),
-    rgResponsavel varchar(15),
-    cargoResponsavel varchar(40),
     estado varchar(30),
     cidade varchar(30),
     bairro varchar(30),
@@ -26,15 +24,6 @@ create table Linha(
 	idLinha int primary key auto_increment,
     trajeto varchar(30)
 );
-create table Motorista(
-	idMotorista int primary key auto_increment,
-    nome varchar(40),
-    cnh varchar(15),
-    horarioEntrada time,
-    horarioSaida time,
-    fkEmpresa char(17),
-    foreign key (fkEmpresa) references Empresa (cnpj)
-);
 create table Onibus(
 	idOnibus int primary key auto_increment,
     placa char(9),
@@ -42,13 +31,23 @@ create table Onibus(
     fkLinha int,
     foreign key(fkLinha) references Linha(idLinha)
 );
-create table OnibusMotorista(
-	idOnibusMotorista int primary key auto_increment,
-    fkOnibus int,
-    foreign key (fkOnibus) references Onibus(idOnibus),
-    fkMotorista int,
-    foreign key (fkMotorista) references Motorista(idMotorista)
+create table registro (
+idRegistro int primary key auto_increment,
+Registro varchar(12),
+dataregistro time,
+FkSensor int,
+foreign key (FkSensor) references Sensor (idSensor)
 );
+
+create table RegistroSensor(
+fkLinha int,
+foreign key(fkLinha) references Linha(idLinha),
+fkOnibus int, 
+foreign key(fkOnibus) references Onibus(idOnibus),
+primary key(fkOnibus,fkLinha),
+Hora time
+);
+
 create table Sensor(
 	idSensor int primary key auto_increment,
     tipo varchar(30),
