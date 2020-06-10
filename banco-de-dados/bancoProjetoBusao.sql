@@ -34,7 +34,7 @@ create table Onibus(
 create table registro (
 idRegistro int primary key auto_increment,
 Registro varchar(12),
-dataregistro time,
+dataregistro datetime,
 FkSensor int,
 foreign key (FkSensor) references Sensor (idSensor)
 );
@@ -45,7 +45,7 @@ foreign key(fkLinha) references Linha(idLinha),
 fkOnibus int, 
 foreign key(fkOnibus) references Onibus(idOnibus),
 primary key(fkOnibus,fkLinha),
-Hora time
+Hora datetime
 );
 
 create table Sensor(
