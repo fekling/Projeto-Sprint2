@@ -33,7 +33,7 @@ create table Onibus(
 );
 create table registro (
 idRegistro int primary key auto_increment,
-Registro varchar(12),
+Registro bit(1),
 dataregistro datetime,
 FkSensor int,
 foreign key (FkSensor) references Sensor (idSensor)
