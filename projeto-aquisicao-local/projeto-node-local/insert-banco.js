@@ -91,7 +91,7 @@ function registrar_leitura(presenca) {
         INSERT into registro (registro, dataregistro,FkSensor)
         values (${presenca}, CONVERT(Datetime, '${agora()}', 120),1);
         
-        delete from leitura where id not in 
+        delete from Registro where idRegistro not in 
         (select top ${registros_mantidos_tabela_leitura} idRegistro from registro order by idRegistro desc);`)
         .then(() => {
             console.log('Registro inserido com sucesso!');
@@ -120,7 +120,7 @@ if (gerar_dados_aleatorios) {
 	// dados aleatórios
 	setInterval(function() {
 		console.log('Gerando valores aleatórios!');
-		registrar_leitura(Math.random(1)<0.5?true:false)
+		registrar_leitura(Math.random(1)<0.5?1:0)
 	}, intervalo_geracao_aleatoria_segundos * 1000);
 } else {
 	// iniciando a "escuta" de dispositivos Arduino.
