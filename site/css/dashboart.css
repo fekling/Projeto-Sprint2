@@ -3,6 +3,44 @@ body{
     padding: 0;
     background-color: #ecf0f1;
 }
+.sidebar{
+    height: 100%;
+    width: 0px;
+    background-color: #1f3244;
+    position: fixed; 
+    overflow: hidden;
+    transition: 0.5s;
+}
+.sidebar .closebtn{
+    font-size: 35px;
+    margin-left: 75%;
+    text-align: center;
+    padding-top: 5px;
+}
+.sidebar a{
+    display: block;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    padding: 15px 0 15px 10px; 
+}
+.sidebar a:hover{
+    color: #ffffff;
+    background-color: #818181;
+}
+.header {
+    height: 50px;
+    width: 100%;
+    background-color: #34495e;
+}
+.openbtn {
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}  
+
 .grafico{
     margin-left: 20px;
     margin-top: 50px;
@@ -16,6 +54,7 @@ body{
 
 .alertas{
     padding-top: 20px;
+    margin-top: 20px;
     display: inline-block;
     width: 25%;
     text-align: center;
