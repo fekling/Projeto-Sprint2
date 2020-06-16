@@ -11,13 +11,42 @@ router.get('/ultimas', function(req, res, next) {
 
 	console.log(`Recuperando as últimas ${limite_linhas} leituras`);
 	
-	const instrucaoSql = `select top ${limite_linhas} 
-						temperatura, 
-						umidade, 
-						momento,
-						FORMAT(momento,'HH:mm:ss') as momento_grafico 
-						from leitura order by id desc`;
+	let instrucaoSql = `select `;
 
+	let momento1 = new Date();
+
+	for (let tempos=0; tempos<10; tempos++) {
+		
+		let momento2 = new Date(momento1-10000);
+
+		console.log(`m1: ${momento1} - m2: ${momento2}`);
+		
+		const momento1Sql = `CONVERT(Datetime, '${momento1.toLocaleDateString()} ${momento1.toLocaleTimeString()}', 120)`;
+		const momento2Sql = `CONVERT(Datetime, '${momento2.toLocaleDateString()} ${momento2.toLocaleTimeString()}', 120)`;		
+
+		let instrucao = `
+		'${momento1.getHours()}:${momento1.getMinutes()}' as momento_t${tempos+1},
+
+			(select count(idRegistro) from registro where
+			fkSensor = 1 and
+			dataregistro BETWEEN ${momento2Sql} and ${momento1Sql}) 
+			-
+			(select count(idRegistro) from registro where
+			fkSensor = 2 and
+			dataregistro BETWEEN ${momento2Sql} and ${momento1Sql}) 
+			as passageiros_t${tempos+1} 
+		`
+		if (tempos+1<10) {
+			instrucao+=',';
+		}
+		instrucaoSql += instrucao
+
+		momento1.setTime(momento1-10000)
+	}
+
+	instrucaoSql+=';'
+
+	console.log(`consulta: ${instrucaoSql}`);
 	sequelize.query(instrucaoSql, {
 		model: Leitura,
 		mapToModel: true 
@@ -37,8 +66,37 @@ router.get('/tempo-real', function (req, res, next) {
 	
 	console.log(`Recuperando a última leitura`);
 
-	const instrucaoSql = `select top 1 temperatura, umidade, FORMAT(momento,'HH:mm:ss') as momento_grafico  
-						from leitura order by id desc`;
+	let instrucaoSql = `select `;
+
+	let momento1 = new Date();
+
+	
+		
+		let momento2 = new Date(momento1-10000);
+
+		console.log(`m1: ${momento1} - m2: ${momento2}`);
+		
+		const momento1Sql = `CONVERT(Datetime, '${momento1.toLocaleDateString()} ${momento1.toLocaleTimeString()}', 120)`;
+		const momento2Sql = `CONVERT(Datetime, '${momento2.toLocaleDateString()} ${momento2.toLocaleTimeString()}', 120)`;		
+
+		let instrucao = `
+		'${momento1.getHours()}:${momento1.getMinutes()}' as momento,
+
+			(select count(idRegistro) from registro where
+			fkSensor = 1 and
+			dataregistro BETWEEN ${momento2Sql} and ${momento1Sql}) 
+			-
+			(select count(idRegistro) from registro where
+			fkSensor = 2 and
+			dataregistro BETWEEN ${momento2Sql} and ${momento1Sql}) 
+			as passageiros
+		`
+		instrucaoSql += instrucao
+
+
+	instrucaoSql+=';'
+
+	console.log(`consulta: ${instrucaoSql}`);
 
 	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
 		.then(resultado => {

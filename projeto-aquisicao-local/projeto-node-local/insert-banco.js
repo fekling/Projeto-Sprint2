@@ -89,7 +89,7 @@ function registrar_leitura(presenca) {
 
         return banco.sql.query(`
         INSERT into registro (registro, dataregistro,FkSensor)
-        values (${presenca}, CONVERT(Datetime, '${agora()}', 120),1);
+        values (${presenca}, CONVERT(Datetime, '${agora()}', 120),${parseInt(Math.random()*2)+1});
         
         delete from Registro where idRegistro not in 
         (select top ${registros_mantidos_tabela_leitura} idRegistro from registro order by idRegistro desc);`)
