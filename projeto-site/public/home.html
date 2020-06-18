@@ -7,6 +7,8 @@
 	<title>Dashboard</title>
 	<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
 	<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+	<script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+	<script type="text/javascript" src="funcoes.js"></script>
 	<style>
 		canvas {
 			-moz-user-select: none;
@@ -16,14 +18,13 @@
 	</style>
 </head>
 
-<body>
+<body onload="atualizarGrafico();">
 	<div class="sidebar" id="mySidebar">
 		<a href="#" class="closebtn" onclick="closeNav()">x</a>
-		<a href="home.html">Mobility Solution</a>
+		<a href="home.html"><b id="b_usuario"></b></a>
 		<a href="cadastroEmpresa.html">Cadastrar Empresa</a>
 		<a href="cadastro.html">Cadastrar Usuário</a>
-		<a href="#">Relatórios</a>
-		<a href="#">Configurações</a>
+		<a href="#" onclick="logoff()">sair</a>
 	</div>
 	<div class="header">
 		<a class="openbtn" onclick="openNav()"> ☰ </a>
@@ -47,13 +48,11 @@
 				<p>Quantidade de Passageiros</p> <span id="span3" class="span"></span>
 			</div>
 		</div>
-		<div class="grafico">
-			<canvas id="c_grafico"></canvas>
-		</div>
-		
-		<div class="grafico">
-			<canvas id="c_grafico2"></canvas>
-		</div>
+
+		<div style="width:75%;">
+			<div id="div_aguarde">Dados sendo obtidos...</div>
+			<canvas id="canvas_grafico"></canvas>
+
 		<div class="social">
 			<h3>Alerta De Risco</h3>
 			<img src="img/alertaRisco.png" alt="" class="alertaRisco">
@@ -61,7 +60,7 @@
 		<footer>
 			<p>Compartilhe O Sistema</p>
 		</footer>
-	
+
 	
 	</div>
 	
@@ -71,7 +70,7 @@
 <script src="js/menu.js"></script>
 <script>
 	function mudaCorAlert1(){
-		let muda_alert1 =  parseInt(Math.random() * 40);
+		let muda_alert1 = somatoria;
 		span1.innerHTML = `${muda_alert1} Passageiros`;
 		if(muda_alert1 <=20){
 			alert1.style.backgroundColor = '#27AE60';
@@ -121,263 +120,132 @@
 	setInterval(mudaCorAlert1, 3000);
 	setInterval(mudaCorAlert2, 3000);
 	setInterval(mudaCorAlert3, 3000);
-	var config = {
-		type: 'line',
-		data: {
-			labels: [],
-			datasets: [{
-				label: 'Presença',
-				backgroundColor: window.chartColors.orange,
-				borderColor: window.chartColors.orange,
-				data: [],
-				fill: false,
-			}]
-		},
-		options: {
-			responsive: true,
-			title: {
-				display: true,
-				text: 'Gráfico de Presença de Pessoas'
-			},
-			tooltips: {
-				mode: 'index',
-				intersect: false,
-			},
-			hover: {
-				mode: 'nearest',
-				intersect: true
-			},
-			scales: {
-				xAxes: [{
-					display: true,
-					scaleLabel: {
-						display: true,
-						labelString: 'Horário da Leitura'
-					}
-				}],
-				yAxes: [{
-					display: true,
-					scaleLabel: {
-						display: true,
-						labelString: '0 = Não Tem         1 = Passou Pessoa'
-					}
-				}]
-			}
-		}
-	};
-	var config2 = {
-		type: 'bar',
-		data: {
-			labels: [],
-			datasets: [{
-				label: 'Media',
-				backgroundColor: window.chartColors.orange,
-				borderColor: window.chartColors.orange,
-				data: [],
-				fill: false,
-			}]
-		},
-		options: {
-			responsive: true,
-			title: {
-				display: true,
-				text: 'Gráfico de Média de Pessoas'
-			},
-			tooltips: {
-				mode: 'index',
-				intersect: false,
-			},
-			hover: {
-				mode: 'nearest',
-				intersect: true
-			},
-			scales: {
-				xAxes: [{
-					display: true,
-					scaleLabel: {
-						display: true,
-						labelString: 'Horário da Leitura'
-					}
-				}],
-				yAxes: [{
-					display: true,
-					scaleLabel: {
-						display: true,
-						labelString: 'Quantidade Pessoas'
-					}
-				}]
-			}
-		}
-	};
+	let somatoria = 0;
+    window.onload = obterDadosGrafico;
+
+    verificar_autenticacao();
+
+    // neste JSON tem que ser 'labels', 'datasets' etc, 
+    // porque é o padrão do Chart.js
+    var dados = {
+        labels: [],
+        datasets: [
+            {
+                yAxisID: 'y-presenca',
+                label: 'Passageiros',
+                borderColor: window.chartColors.red,
+                backgroundColor: window.chartColors.red,
+                fill: false,
+                data: []
+            }
+        ]
+    };
 
 
+    // só mexer se quiser alterar o tempo de atualização
+    // ou se souber o que está fazendo!
+    function atualizarGrafico() {
 
-	// esse "sortearTemperatura()" será desnecessário quando usarmos o backend futuramente
-	function sortearTemperatura() {
-		var limiteMin = 0;
-		var limiteMax = 1;
-		return parseInt(Math.random() * 2);
-	}
-	function sortearMedia() {
-		var limiteMin = 1;
-		var limiteMax = 40;
-		return parseInt(Math.random() * 40);
-	}
+        fetch('/leituras/tempo-real', { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
 
-	function recuperarDadosIniciais() {
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
 
-		// esse "registros" será recuperado do backend futuramente
-		var registros = [
-			{
-				momento: '00:03:42',
-				leitura: sortearTemperatura()
-			},
-			{
-				momento: '00:03:52',
-				leitura: sortearTemperatura()
-			},
-			{
-				momento: '00:04:02',
-				leitura: sortearTemperatura()
-			},
-			{
-				momento: '00:04:12',
-				leitura: sortearTemperatura()
-			},
-			{
-				momento: '00:04:22',
-				leitura: sortearTemperatura()
-			},
-			{
-				momento: '00:04:32',
-				leitura: sortearTemperatura()
-			},
-			{
-				momento: '00:04:42',
-				leitura: sortearTemperatura()
-			}
-		];
-		var registros2 = [
-			{
-				momento: '00:01:45',
-				leitura: sortearMedia()
-			},
-			{
-				momento: '00:02:45',
-				leitura: sortearMedia()
-			},
-			{
-				momento: '00:03:45',
-				leitura: sortearMedia()
-			},
-			{
-				momento: '00:04:45',
-				leitura: sortearMedia()
-			},
-			{
-				momento: '00:05:45',
-				leitura: sortearMedia()
-			},
-			{
-				momento: '00:06:45',
-				leitura: sortearMedia()
-			},
-			{
-				momento: '00:07:45',
-				leitura: sortearMedia()
-			}
-		];
+                    if (dados.labels.length == 10) {
+                        dados.labels.shift();
+                        dados.datasets[0].data.shift();
+                    }
+                    dados.labels.push(novoRegistro.momento);
+					somatoria += novoRegistro.passageiros;
+					
+                    if (somatoria < 0) somatoria = 0;
+                    dados.datasets[0].data.push(somatoria);
+                    window.grafico_linha.update();
+
+                    setTimeout(atualizarGrafico, 5000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                setTimeout(atualizarGrafico, 5000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    // altere aqui as configurações do gráfico
+    // (tamanhos, cores, textos, etc)
+    function configurarGrafico() {
+        var configuracoes = {
+            responsive: true,
+            animation: { duration: 500 },
+            hoverMode: 'index',
+            stacked: false,
+            title: {
+                display: true,
+                text: 'Histórico recente de Passageiros'
+            },
+            scales: {
+                yAxes: [{
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'left',
+                    id: 'y-presenca',
+                }
+                ],
+            }
+        };
+
+        return configuracoes;
+    }
+
+    // altere aqui como os dados serão exibidos
+    // e como são recuperados do BackEnd
+    function obterDadosGrafico() {
+
+        fetch('/leituras/ultimas', { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (registro) {
+
+                    console.log(`Dados recebidos: ${JSON.stringify(registro)}`);
+
+                    dados.labels.push(registro[0].momento_t1);
 
 
-		var contador = 0;
-		var contador2 = 0;
+                    Object.keys(registro[0]).map(key => {
+                        if (key.indexOf('passageiros') > -1) somatoria += registro[0][key];
+                    });
 
-		while (contador < registros.length) {
+                    dados.datasets[0].data.push(somatoria);
 
-			config.data.labels.push(registros[contador].momento);  // incluir um novo momento
-			config.data.datasets[0].data.push(registros[contador].leitura);  // incluir uma nova leitura
+                    div_aguarde.style.display = 'none';
 
-			contador++;
-		}
+                    plotarGrafico(dados);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
 
-		while (contador2 < registros2.length) {
+    }
 
-			config2.data.labels.push(registros2[contador2].momento);  // incluir um novo momento
-			config2.data.datasets[0].data.push(registros2[contador2].leitura);  // incluir uma nova leitura
+    // só altere aqui se souber o que está fazendo!
+    function plotarGrafico(dados) {
+        console.log('iniciando plotagem do gráfico...');
 
-			contador2++;
-		}
-	}
+        var ctx = canvas_grafico.getContext('2d');
+        window.grafico_linha = Chart.Line(ctx, {
+            data: dados,
+            options: configurarGrafico()
+        });
 
-	function receberNovasLeituras() {
-		setTimeout(() => {
-
-			// esses "agora" etc até "momentos" serão desnecessários quando usarmos o backend futuramente
-			var agora = new Date();
-			var hora = agora.getHours();
-			var minuto = agora.getMinutes();
-			var segundo = agora.getSeconds();
-			var momento = `${hora > 9 ? '' : '0'}${hora}:${minuto > 9 ? '' : '0'}${minuto}:${segundo > 9 ? '' : '0'}${segundo}`;
-
-			// esse "novoRegistro" será recuperado do backend futuramente
-			var novoRegistro = {
-				momento: momento,
-				leitura: sortearTemperatura()
-			};
-
-			config.data.labels.shift(); // apagar o primeiro
-			config.data.labels.push(novoRegistro.momento); // incluir um novo momento
-			config.data.datasets[0].data.shift();  // apagar o primeiro
-			config.data.datasets[0].data.push(novoRegistro.leitura); // incluir uma nova leitura
-			window.myLine.update();
-			
-
-			receberNovasLeituras();
-
-		}, 1000); // 5000 ms -> 5 segundos
-	}
-	function receberNovasLeituras2() {
-		setTimeout(() => {
-
-			// esses "agora" etc até "momentos" serão desnecessários quando usarmos o backend futuramente
-			var agora = new Date();
-			var hora = agora.getHours();
-			var minuto = agora.getMinutes();
-			var segundo = agora.getSeconds();
-			var momento = `${hora > 9 ? '' : '0'}${hora}:${minuto > 9 ? '' : '0'}${minuto}:${segundo > 9 ? '' : '0'}${segundo}`;
-
-			// esse "novoRegistro" será recuperado do backend futuramente
-		
-			var novoRegistro2 = {
-				momento: momento,
-				leitura: sortearMedia()
-			};
-
-			config2.data.labels.shift(); // apagar o primeiro
-			config2.data.labels.push(novoRegistro2.momento); // incluir um novo momento
-			config2.data.datasets[0].data.shift();  // apagar o primeiro
-			config2.data.datasets[0].data.push(novoRegistro2.leitura); // incluir uma nova leitura
-			window.myLine2.update();
-			
-
-			receberNovasLeituras2();
-
-		}, 7000); // 5000 ms -> 5 segundos
-	}
-
-	function plotarGrafico() {
-		recuperarDadosIniciais();
-
-		var ctx = document.getElementById('c_grafico').getContext('2d');
-		window.myLine = new Chart(ctx, config);
-
-		var ctx2 = document.getElementById('c_grafico2').getContext('2d');
-		window.myLine2 = new Chart(ctx2, config2);
-
-		receberNovasLeituras();
-		receberNovasLeituras2();
-	}
-
-	window.onload = plotarGrafico;
+        setTimeout(atualizarGrafico, 5000);
+    }
 
 </script>
