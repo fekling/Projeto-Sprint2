@@ -1,0 +1,95 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #ecf0f1;
+}
+.sidebar{
+    height: 100%;
+    width: 0px;
+    background-color: #1f3244;
+    position: fixed; 
+    overflow: hidden;
+    transition: 0.5s;
+}
+.sidebar .closebtn{
+    font-size: 35px;
+    margin-left: 75%;
+    text-align: center;
+    padding-top: 5px;
+}
+.sidebar a{
+    display: block;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    padding: 15px 0 15px 10px; 
+}
+.sidebar a:hover{
+    color: #ffffff;
+    background-color: #818181;
+}
+.header {
+    height: 50px;
+    width: 100%;
+    background-color: #34495e;
+}
+.openbtn {
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}  
+
+.grafico{
+    margin-left: 20px;
+    margin-top: 50px;
+    display: inline-block;
+    border-radius: 5px;
+    height: 300px;
+    background-color: white;
+    width: 45%;
+    padding-right: 5px;
+}
+
+.alertas{
+    padding-top: 20px;
+    margin-top: 20px;
+    display: inline-block;
+    width: 25%;
+    text-align: center;
+    font-size: 22px;
+    background-color: #E1E1E1;
+    border: 1px solid black;
+    margin-left: 50px;
+    text-shadow: 3px;
+    border-radius: 5px;
+}
+.conteudoAlert{
+    background-color:white;
+    height: 130px;
+    padding-top: 10px;
+}
+.conteudoAlert p{
+    text-align: center;
+    color: black;
+    font-size: 22px;
+}
+.span{
+    text-align: center;
+    color: black;
+    font-size: 20px;
+}
+.social {
+    display: inline-block;
+    margin: 16px;
+    margin-top: 25px;
+    border-radius: 5px;
+    width: 96%;
+    height: 100px;
+    background-color: white;
+    margin-bottom: 25px;
+}
+.risco{
+    width: 20%;
+}

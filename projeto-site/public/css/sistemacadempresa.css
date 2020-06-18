@@ -1,0 +1,172 @@
+﻿body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.body{
+    background-image: url('../img/fundo.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+.telaLogin{
+    text-align: center;
+    margin-top: 10%;
+
+}
+.login{
+    margin-top: 30px;
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+    border: black 1px solid;
+    padding-left: 10px;
+    font-size: 18px;
+    color: grey;
+}
+.login:hover{
+    border: 1px solid blue;
+}
+.usuario{
+    width: 120px;
+    border-radius: 99px;
+    background-color: transparent;
+    margin-top: 3%;;
+}
+.cadastro{
+    text-decoration: none;
+    color: white;
+    margin-left: 0px;
+    font-size: 18px;
+    
+}
+.cadastro:hover{
+    color: blue;
+}
+.btnLogar{
+    width: 150px;
+    height: 40px;
+    margin-left: 180px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: ARIAL;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btnLogar:hover{
+    color: blue;
+}
+.div_cadastro{
+    float: left;
+    margin-left: 30px;
+    margin-right: 40px;
+}
+.div_empresa{
+    float: right;
+    margin-right: 40px;
+}
+.div_endereco{
+    text-align: center;
+}
+.div_butao{
+    margin-top: 20px;
+    text-align: center;
+}
+.inputCadastro{
+    margin-top: 30px;
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+    border: black 1px solid;
+    padding-left: 10px;
+    font-size: 18px;
+    color: grey;
+}
+.btnEntrar{
+    width: 150px;
+    height: 40px;
+    margin-left: 180px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-family: ARIAL;
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btnEntrar:hover{
+    color: blue;
+}
+.cadastro2{
+    text-decoration: none;
+    color: black;
+    margin-left: 0px;
+    font-size: 18px;
+}
+.cadastro2:hover{
+    color: blue;
+}
+.inputComplemento{
+    margin-top: 30px;
+    width: 820px;
+    height: 50px;
+    border-radius: 5px;
+    border: black 1px solid;
+    padding-left: 10px;
+    font-size: 18px;
+    color: grey;
+}
+.txtEndereco{
+    margin: 39px 615px -5px
+}
+#menu ul{
+    margin: 0;
+    background-color: transparent;
+    width: 100%;
+    position: fixed;
+    height: 70px;
+    padding-top: 10px;
+}
+#menu ul li{
+    display: inline;
+    float: right;
+    
+}
+
+
+#menu ul li a{
+    padding: 5px 183px;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+#menu ul li  .nomeEmpresa{
+    margin-left: -627px;
+    font-size: 25px;
+    margin-top: -5px;
+}
+#menu ul li .nomeEmpresa:hover{
+    color: white;
+}#menu ul li a:hover{
+    color: blue;
+}.nome{
+    color: orange;
+}
+#menu{
+    margin: 0px 0px -265px 750px
+}
+
+.tudo{
+    background-image: url('../img/tey.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    margin: 0px;
+    padding: 0;
+}

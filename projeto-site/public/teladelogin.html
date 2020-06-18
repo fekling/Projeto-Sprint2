@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Mobility Solutions Login</title>
+    <link rel="stylesheet" type="text/css" href="css/teladelogin.css">
+<body>
+        <img src="img/logono.png" class="logo">
+    <div class="loginbox">
+            
+        <h1>Faça seu Login</h1>
+    <img src="img/avatar.png" class="avatar">
+        <form id="form_login" method="post" onsubmit="return entrar()">
+            <p>Usuario</p>
+            <input type="text" class="input" placeholder="Login" id="email" name="login">
+            <p>Senha</p>
+            <input type="password" class="input" placeholder="Senha" id="senha1" name="senha">
+            <input type="submit" class="submit" value="Login" onclick="entrar()">
+        </form>
+    </div>
+
+</body>
+</head>
+</html>
+<script>
+     function entrar() {
+        var formulario = new URLSearchParams(new FormData(form_login));
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+            
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+
+                    sessionStorage.login_usuario_meuapp = json.login;
+                    sessionStorage.nome_usuario_meuapp = json.nome;
+                    
+                    window.location.href = 'home.html';
+                });
+
+            } else {
+
+                console.log('Erro de login!');
+
+                response.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+    </script>

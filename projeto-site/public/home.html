@@ -1,0 +1,383 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/dashboart.css">
+	<title>Dashboard</title>
+	<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+	<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+	<style>
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="sidebar" id="mySidebar">
+		<a href="#" class="closebtn" onclick="closeNav()">x</a>
+		<a href="home.html">Mobility Solution</a>
+		<a href="cadastroEmpresa.html">Cadastrar Empresa</a>
+		<a href="cadastro.html">Cadastrar Usuário</a>
+		<a href="#">Relatórios</a>
+		<a href="#">Configurações</a>
+	</div>
+	<div class="header">
+		<a class="openbtn" onclick="openNav()"> ☰ </a>
+	</div>
+	<div id="main">
+		<div class="alertas" id="alert">
+			Ônibus 1
+			<div class="conteudoAlert" id="alert1">
+				<p>Quantidade de Passageiros</p> <span id="span1" class="span"></span>
+			</div>
+		</div>
+		<div class="alertas">
+			Ônibus 2
+			<div class="conteudoAlert" id="alert2">
+				<p>Quantidade de Passageiros</p> <span id="span2" class="span"></span>
+			</div>
+		</div>
+		<div class="alertas">
+			Ônibus 3
+			<div class="conteudoAlert" id="alert3">
+				<p>Quantidade de Passageiros</p> <span id="span3" class="span"></span>
+			</div>
+		</div>
+		<div class="grafico">
+			<canvas id="c_grafico"></canvas>
+		</div>
+		
+		<div class="grafico">
+			<canvas id="c_grafico2"></canvas>
+		</div>
+		<div class="social">
+			<h3>Alerta De Risco</h3>
+			<img src="img/alertaRisco.png" alt="" class="alertaRisco">
+		  </div>
+		<footer>
+			<p>Compartilhe O Sistema</p>
+		</footer>
+	
+	
+	</div>
+	
+</body>
+
+</html>
+<script src="js/menu.js"></script>
+<script>
+	function mudaCorAlert1(){
+		let muda_alert1 =  parseInt(Math.random() * 40);
+		span1.innerHTML = `${muda_alert1} Passageiros`;
+		if(muda_alert1 <=20){
+			alert1.style.backgroundColor = '#27AE60';
+		}
+		else if(muda_alert1 <=30){
+			alert1.style.backgroundColor = '#F1C40F';
+		}
+		else if(muda_alert1 <=35){
+			alert1.style.backgroundColor = '#fff714';
+		}
+		else {
+			alert1.style.backgroundColor = '#E74C3C';
+		}
+	}
+	function mudaCorAlert2(){
+		let muda_alert2 =  parseInt(Math.random() * 40);
+		span2.innerHTML = `${muda_alert2} Passageiros`;
+		if(muda_alert2 <=20){
+			alert2.style.backgroundColor = '#27AE60';
+		}
+		else if(muda_alert2 <=30){
+			alert2.style.backgroundColor = '#F1C40F';
+		}
+		else if(muda_alert2 <=35){
+			alert2.style.backgroundColor = '#fff714';
+		}
+		else {
+			alert2.style.backgroundColor = '#E74C3C';
+		}
+	}
+	function mudaCorAlert3(){
+		let muda_alert3 =  parseInt(Math.random() * 40);
+		span3.innerHTML = `${muda_alert3} Passageiros`;
+		if(muda_alert3 <=20){
+			alert3.style.backgroundColor = '#27AE60';
+		}
+		else if(muda_alert3 <=30){
+			alert3.style.backgroundColor = '#F1C40F';
+		}
+		else if(muda_alert3 <=35){
+			alert3.style.backgroundColor = '#fff714';
+		}
+		else {
+			alert3.style.backgroundColor = '#E74C3C';
+		}
+	}
+	setInterval(mudaCorAlert1, 3000);
+	setInterval(mudaCorAlert2, 3000);
+	setInterval(mudaCorAlert3, 3000);
+	var config = {
+		type: 'line',
+		data: {
+			labels: [],
+			datasets: [{
+				label: 'Presença',
+				backgroundColor: window.chartColors.orange,
+				borderColor: window.chartColors.orange,
+				data: [],
+				fill: false,
+			}]
+		},
+		options: {
+			responsive: true,
+			title: {
+				display: true,
+				text: 'Gráfico de Presença de Pessoas'
+			},
+			tooltips: {
+				mode: 'index',
+				intersect: false,
+			},
+			hover: {
+				mode: 'nearest',
+				intersect: true
+			},
+			scales: {
+				xAxes: [{
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Horário da Leitura'
+					}
+				}],
+				yAxes: [{
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: '0 = Não Tem         1 = Passou Pessoa'
+					}
+				}]
+			}
+		}
+	};
+	var config2 = {
+		type: 'bar',
+		data: {
+			labels: [],
+			datasets: [{
+				label: 'Media',
+				backgroundColor: window.chartColors.orange,
+				borderColor: window.chartColors.orange,
+				data: [],
+				fill: false,
+			}]
+		},
+		options: {
+			responsive: true,
+			title: {
+				display: true,
+				text: 'Gráfico de Média de Pessoas'
+			},
+			tooltips: {
+				mode: 'index',
+				intersect: false,
+			},
+			hover: {
+				mode: 'nearest',
+				intersect: true
+			},
+			scales: {
+				xAxes: [{
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Horário da Leitura'
+					}
+				}],
+				yAxes: [{
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Quantidade Pessoas'
+					}
+				}]
+			}
+		}
+	};
+
+
+
+	// esse "sortearTemperatura()" será desnecessário quando usarmos o backend futuramente
+	function sortearTemperatura() {
+		var limiteMin = 0;
+		var limiteMax = 1;
+		return parseInt(Math.random() * 2);
+	}
+	function sortearMedia() {
+		var limiteMin = 1;
+		var limiteMax = 40;
+		return parseInt(Math.random() * 40);
+	}
+
+	function recuperarDadosIniciais() {
+
+		// esse "registros" será recuperado do backend futuramente
+		var registros = [
+			{
+				momento: '00:03:42',
+				leitura: sortearTemperatura()
+			},
+			{
+				momento: '00:03:52',
+				leitura: sortearTemperatura()
+			},
+			{
+				momento: '00:04:02',
+				leitura: sortearTemperatura()
+			},
+			{
+				momento: '00:04:12',
+				leitura: sortearTemperatura()
+			},
+			{
+				momento: '00:04:22',
+				leitura: sortearTemperatura()
+			},
+			{
+				momento: '00:04:32',
+				leitura: sortearTemperatura()
+			},
+			{
+				momento: '00:04:42',
+				leitura: sortearTemperatura()
+			}
+		];
+		var registros2 = [
+			{
+				momento: '00:01:45',
+				leitura: sortearMedia()
+			},
+			{
+				momento: '00:02:45',
+				leitura: sortearMedia()
+			},
+			{
+				momento: '00:03:45',
+				leitura: sortearMedia()
+			},
+			{
+				momento: '00:04:45',
+				leitura: sortearMedia()
+			},
+			{
+				momento: '00:05:45',
+				leitura: sortearMedia()
+			},
+			{
+				momento: '00:06:45',
+				leitura: sortearMedia()
+			},
+			{
+				momento: '00:07:45',
+				leitura: sortearMedia()
+			}
+		];
+
+
+		var contador = 0;
+		var contador2 = 0;
+
+		while (contador < registros.length) {
+
+			config.data.labels.push(registros[contador].momento);  // incluir um novo momento
+			config.data.datasets[0].data.push(registros[contador].leitura);  // incluir uma nova leitura
+
+			contador++;
+		}
+
+		while (contador2 < registros2.length) {
+
+			config2.data.labels.push(registros2[contador2].momento);  // incluir um novo momento
+			config2.data.datasets[0].data.push(registros2[contador2].leitura);  // incluir uma nova leitura
+
+			contador2++;
+		}
+	}
+
+	function receberNovasLeituras() {
+		setTimeout(() => {
+
+			// esses "agora" etc até "momentos" serão desnecessários quando usarmos o backend futuramente
+			var agora = new Date();
+			var hora = agora.getHours();
+			var minuto = agora.getMinutes();
+			var segundo = agora.getSeconds();
+			var momento = `${hora > 9 ? '' : '0'}${hora}:${minuto > 9 ? '' : '0'}${minuto}:${segundo > 9 ? '' : '0'}${segundo}`;
+
+			// esse "novoRegistro" será recuperado do backend futuramente
+			var novoRegistro = {
+				momento: momento,
+				leitura: sortearTemperatura()
+			};
+
+			config.data.labels.shift(); // apagar o primeiro
+			config.data.labels.push(novoRegistro.momento); // incluir um novo momento
+			config.data.datasets[0].data.shift();  // apagar o primeiro
+			config.data.datasets[0].data.push(novoRegistro.leitura); // incluir uma nova leitura
+			window.myLine.update();
+			
+
+			receberNovasLeituras();
+
+		}, 1000); // 5000 ms -> 5 segundos
+	}
+	function receberNovasLeituras2() {
+		setTimeout(() => {
+
+			// esses "agora" etc até "momentos" serão desnecessários quando usarmos o backend futuramente
+			var agora = new Date();
+			var hora = agora.getHours();
+			var minuto = agora.getMinutes();
+			var segundo = agora.getSeconds();
+			var momento = `${hora > 9 ? '' : '0'}${hora}:${minuto > 9 ? '' : '0'}${minuto}:${segundo > 9 ? '' : '0'}${segundo}`;
+
+			// esse "novoRegistro" será recuperado do backend futuramente
+		
+			var novoRegistro2 = {
+				momento: momento,
+				leitura: sortearMedia()
+			};
+
+			config2.data.labels.shift(); // apagar o primeiro
+			config2.data.labels.push(novoRegistro2.momento); // incluir um novo momento
+			config2.data.datasets[0].data.shift();  // apagar o primeiro
+			config2.data.datasets[0].data.push(novoRegistro2.leitura); // incluir uma nova leitura
+			window.myLine2.update();
+			
+
+			receberNovasLeituras2();
+
+		}, 7000); // 5000 ms -> 5 segundos
+	}
+
+	function plotarGrafico() {
+		recuperarDadosIniciais();
+
+		var ctx = document.getElementById('c_grafico').getContext('2d');
+		window.myLine = new Chart(ctx, config);
+
+		var ctx2 = document.getElementById('c_grafico2').getContext('2d');
+		window.myLine2 = new Chart(ctx2, config2);
+
+		receberNovasLeituras();
+		receberNovasLeituras2();
+	}
+
+	window.onload = plotarGrafico;
+
+</script>

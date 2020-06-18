@@ -20,7 +20,7 @@ require('events').EventEmitter.defaultMaxListeners = 15;
 
 
 
-const registros_mantidos_tabela_leitura = 12;
+const registros_mantidos_tabela_leitura = 60;
 
 
 function iniciar_escuta() {
