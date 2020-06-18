@@ -89,7 +89,32 @@ h1{
     width: 200px;
     padding-top: 1%;
 }
+.menu ul{
+    margin:-16px 0px 0px -70px;
+    background-color: transparent;
+    width: 100%;
+    position: fixed;
+    height: 70px;
+}
+.menu ul li{
+    display: inline;
+    float: right;
+}
 
+
+.menu ul li a{
+    padding: 45px 36px;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 23px;
+}
+.menu ul li .nomeEmpresa:hover{
+    color: white;
+}
+.menu ul li a:hover{
+    color: blue;
+}
 
 
 

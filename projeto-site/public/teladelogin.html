@@ -1,13 +1,23 @@
 <html>
+
 <head>
-<title>Mobility Solutions Login</title>
+    <title>Mobility Solutions Login</title>
     <link rel="stylesheet" type="text/css" href="css/teladelogin.css">
+
 <body>
-        <img src="img/logono.png" class="logo">
+    <div class="menu">
+        <ul>
+            <li><a href="Financeiro/SIMULADOR FINANCEIRO.html">Simulador Financeiro</a></li>
+            <li><a href="index.html">Pagina inicial</a></li>
+
+        </ul>
+    </div>
+
+    <img src="img/logono.png" class="logo">
     <div class="loginbox">
-            
+
         <h1>Faça seu Login</h1>
-    <img src="img/avatar.png" class="avatar">
+        <img src="img/avatar.png" class="avatar">
         <form id="form_login" method="post" onsubmit="return entrar()">
             <p>Usuario</p>
             <input type="text" class="input" placeholder="Login" id="email" name="login">
@@ -19,22 +29,23 @@
 
 </body>
 </head>
+
 </html>
 <script>
-     function entrar() {
+    function entrar() {
         var formulario = new URLSearchParams(new FormData(form_login));
         fetch("/usuarios/autenticar", {
             method: "POST",
             body: formulario
         }).then(resposta => {
-            
+
             if (resposta.ok) {
 
                 resposta.json().then(json => {
 
                     sessionStorage.login_usuario_meuapp = json.login;
                     sessionStorage.nome_usuario_meuapp = json.nome;
-                    
+
                     window.location.href = 'home.html';
                 });
 
@@ -50,4 +61,4 @@
 
         return false;
     }
-    </script>
+</script>

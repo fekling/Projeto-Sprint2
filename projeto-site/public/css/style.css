@@ -3,6 +3,7 @@ html{
 }
 body{
     margin: 0;
+    font-family: sans-serif;
 }
 .menu ul{
     margin: -20px 0px 0px 0px;
