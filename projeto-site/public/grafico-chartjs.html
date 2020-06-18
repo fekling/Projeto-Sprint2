@@ -29,7 +29,7 @@
 
 </html>
 <script>
-
+    let somatoria = 0;
     window.onload = obterDadosGrafico;
 
     verificar_autenticacao();
@@ -60,14 +60,17 @@
                 response.json().then(function (novoRegistro) {
 
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    
-                    // tirando e colocando valores no gráfico
-                    dados.labels.shift(); // apagar o primeiro
-                    dados.labels.push(novoRegistro.momento); // incluir um novo momento
-                    dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
-                    dados.datasets[0].data.push(novoRegistro.passageiros); // incluir uma nova leitura de temperatur
+
+                    if (dados.labels.length == 10) {
+                        dados.labels.shift();
+                        dados.datasets[0].data.shift();
+                    }
+                    dados.labels.push(novoRegistro.momento);
+                    somatoria += novoRegistro.passageiros;
+                    if (somatoria < 0) somatoria = 0;
+                    dados.datasets[0].data.push(somatoria);
                     window.grafico_linha.update();
-                    
+
                     setTimeout(atualizarGrafico, 5000);
                 });
             } else {
@@ -75,10 +78,10 @@
                 setTimeout(atualizarGrafico, 5000);
             }
         })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
-        
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
     }
 
     // altere aqui as configurações do gráfico
@@ -86,7 +89,7 @@
     function configurarGrafico() {
         var configuracoes = {
             responsive: true,
-            animation: {duration: 500},
+            animation: { duration: 500 },
             hoverMode: 'index',
             stacked: false,
             title: {
@@ -117,35 +120,14 @@
 
                     console.log(`Dados recebidos: ${JSON.stringify(registro)}`);
 
+                    dados.labels.push(registro[0].momento_t1);
 
-                    
-                        // aqui, após 'registro.' use os nomes 
-                        // dos atributos que vem no JSON 
-                        // que gerou na consulta ao banco de dados
 
-                        dados.labels.push(registro[0].momento_t1);
-                        dados.labels.push(registro[0].momento_t2);
-                        dados.labels.push(registro[0].momento_t3);
-                        dados.labels.push(registro[0].momento_t4);
-                        dados.labels.push(registro[0].momento_t5);
-                        dados.labels.push(registro[0].momento_t6);
-                        dados.labels.push(registro[0].momento_t7);
-                        dados.labels.push(registro[0].momento_t8);
-                        dados.labels.push(registro[0].momento_t9);
-                        dados.labels.push(registro[0].momento_t10);
+                    Object.keys(registro[0]).map(key => {
+                        if (key.indexOf('passageiros') > -1) somatoria += registro[0][key];
+                    });
 
-                        dados.datasets[0].data.push(registro[0].passageiros_t1);
-                        dados.datasets[0].data.push(registro[0].passageiros_t2);
-                        dados.datasets[0].data.push(registro[0].passageiros_t3);
-                        dados.datasets[0].data.push(registro[0].passageiros_t4);
-                        dados.datasets[0].data.push(registro[0].passageiros_t5);
-                        dados.datasets[0].data.push(registro[0].passageiros_t6);
-                        dados.datasets[0].data.push(registro[0].passageiros_t7);
-                        dados.datasets[0].data.push(registro[0].passageiros_t8);
-                        dados.datasets[0].data.push(registro[0].passageiros_t9);
-                        dados.datasets[0].data.push(registro[0].passageiros_t10);
-                    
-                    console.log(JSON.stringify(dados));
+                    dados.datasets[0].data.push(somatoria);
 
                     div_aguarde.style.display = 'none';
 
@@ -155,9 +137,9 @@
                 console.error('Nenhum dado encontrado ou erro na API');
             }
         })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
 
     }
 

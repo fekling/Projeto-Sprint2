@@ -7,7 +7,7 @@ var Leitura = require('../models').Leitura;
 router.get('/ultimas', function(req, res, next) {
 	
 	// quantas são as últimas leituras que quer? 8 está bom?
-	const limite_linhas = 60;
+	const limite_linhas = 10;
 
 	console.log(`Recuperando as últimas ${limite_linhas} leituras`);
 	
