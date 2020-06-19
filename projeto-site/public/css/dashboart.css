@@ -93,3 +93,53 @@ body{
 .risco{
     width: 20%;
 }
+
+
+/* MAIN */
+
+.container i{
+    padding-left: 40px;
+    font-size: 110px;
+    color: white;
+    margin-top: 20px;
+    margin-left: 35%;
+}
+
+.box_cadastro{
+    margin: auto;
+    width: 45%;
+    height: 646px;
+    background: #363e50;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.box_cadastro h2{
+text-align: center;
+color: black;
+margin-bottom: 30px;
+padding-top: 20px;
+}
+
+.box_cadastro input{
+    display: list-item;
+    margin-left: 10%;
+    margin-bottom: 50px;
+    width: 80%;
+    height: 30px;
+    font-size: 24px;
+    border: none;
+    border-bottom: black 3px solid;
+}
+
+.box_cadastro button{
+    display: list-item;
+    margin-left: 10%;
+    margin-bottom: 50px;
+    width: 80%;
+    height: 30px;
+    font-size: 24px;
+    border-radius: 20px;
+    background: black;
+    color: whitesmoke;
+}

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://kit.fontawesome.com/fe36e9b197.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/dashboart.css">
     <title>Cadastro Usuario</title>
 </head>
@@ -23,7 +24,18 @@
 	</div>
 	<div id="main">
         <!-- Conteudo da pagina aqui dentro -->
+		<div class="container">
+            
 
+			<div class="box_cadastro">
+				<i class="far fa-user"></i>
+				<h2>Faça o seu cadastro:</h2>
+				<input type="text" placeholder="Nome" id="nickname">
+				<input type="text" placeholder="Email" id="email">
+				<input type ="password" placeholder="Senha" id="senha">
+				<input type="password" placeholder="Confirme sua senha" id="senha2">
+				<button onclick="confirma()">Confimar Cadastro</button>
+			</div>
 
     </div>
 </body>
