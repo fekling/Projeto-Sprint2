@@ -17,7 +17,7 @@
 </head>
 
 <body>
-	<div>
+	<div style="display: none;">
 		<h1>Sensor LM35 - Temperatura</h1>
 			<section>
 				<h2>Média: <label id='average'>0.00</label></h2>
@@ -27,7 +27,7 @@
 				<canvas id="chart"></canvas>
 		<section>
 	</div>
-	<div>
+	<div style="display: none;">
 		<section>
 			<h1>Sensor DHT11 - Umidade</h1>
 			<h2>Média: <label id='averageHumidity'>0.00</label></h2>
@@ -45,7 +45,7 @@
 			<canvas id="chart-switch"></canvas>
 		<section>
 	</div>
-	<div>
+	<div style="display: none;">
 		<section>
 			<h1>Sensor LDR - Luminosidade</h1>
 			<h2>Média: <label id='averageLumi'>0.00</label></h2>
@@ -383,11 +383,17 @@
 		
 		get_lumi();
 
-		function sendTemperature(){
-			var http = new XMLHttpRequest();
-            http.open('POST', 'http://localhost:3000/api/sendData', false);
-            http.send(null);
-		}
+		// function sendTemperature(){
+		// 	var http = new XMLHttpRequest();
+        //     http.open('POST', 'http://localhost:3000/api/sendData', false);
+        //     http.send(null);
+		// }
+		// function sendHumidity(){
+		// 	var http = new XMLHttpRequest();
+        //     http.open('POST', 'http://localhost:3000/api/sendData', false);
+        //     http.send(null);
+		// }
+
 
 
 
@@ -397,7 +403,8 @@
 			get_dataHumidity();
 			get_switch();
 			get_lumi();
-			sendTemperature();
+			// sendTemperature();
+			// sendHumidity();
 		}, 3000);
 		
 

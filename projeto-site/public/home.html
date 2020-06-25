@@ -36,19 +36,6 @@
 				<p>Quantidade de Passageiros</p> <span id="span1" class="span"></span>
 			</div>
 		</div>
-		<div class="alertas">
-			Ônibus 2
-			<div class="conteudoAlert" id="alert2">
-				<p>Quantidade de Passageiros</p> <span id="span2" class="span"></span>
-			</div>
-		</div>
-		<div class="alertas">
-			Ônibus 3
-			<div class="conteudoAlert" id="alert3">
-				<p>Quantidade de Passageiros</p> <span id="span3" class="span"></span>
-			</div>
-		</div>
-
 		<div style="width:75%;">
 			<div id="div_aguarde">Dados sendo obtidos...</div>
 			<canvas id="canvas_grafico"></canvas>
@@ -57,13 +44,9 @@
 			<h3>Alerta De Risco</h3>
 			<img src="img/alertaRisco.png" alt="" class="alertaRisco">
 		  </div>
-		<footer>
-			<p>Compartilhe O Sistema</p>
-		</footer>
 
-	
 	</div>
-	
+
 </body>
 
 </html>
@@ -85,41 +68,7 @@
 			alert1.style.backgroundColor = '#E74C3C';
 		}
 	}
-	function mudaCorAlert2(){
-		let muda_alert2 =  parseInt(Math.random() * 40);
-		span2.innerHTML = `${muda_alert2} Passageiros`;
-		if(muda_alert2 <=20){
-			alert2.style.backgroundColor = '#27AE60';
-		}
-		else if(muda_alert2 <=30){
-			alert2.style.backgroundColor = '#F1C40F';
-		}
-		else if(muda_alert2 <=35){
-			alert2.style.backgroundColor = '#fff714';
-		}
-		else {
-			alert2.style.backgroundColor = '#E74C3C';
-		}
-	}
-	function mudaCorAlert3(){
-		let muda_alert3 =  parseInt(Math.random() * 40);
-		span3.innerHTML = `${muda_alert3} Passageiros`;
-		if(muda_alert3 <=20){
-			alert3.style.backgroundColor = '#27AE60';
-		}
-		else if(muda_alert3 <=30){
-			alert3.style.backgroundColor = '#F1C40F';
-		}
-		else if(muda_alert3 <=35){
-			alert3.style.backgroundColor = '#fff714';
-		}
-		else {
-			alert3.style.backgroundColor = '#E74C3C';
-		}
-	}
 	setInterval(mudaCorAlert1, 3000);
-	setInterval(mudaCorAlert2, 3000);
-	setInterval(mudaCorAlert3, 3000);
 	let somatoria = 0;
     window.onload = obterDadosGrafico;
 
