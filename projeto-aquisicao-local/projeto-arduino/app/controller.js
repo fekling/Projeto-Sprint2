@@ -3,7 +3,9 @@ const { ArduinoDataTemp } = require('./newserial')
 const { ArduinoDataHumidity } = require('./serialHumidity')
 const { ArduinoDataSwitch } = require('./serialSwitch')
 const { ArduinoDataLuminosity} = require('./serialLuminosidity')
-const db = require('./database')
+//const db = require('./database')
+const banco = require(`./database`);
+const registros_mantidos_tabela_leitura = 300;
 const router = express.Router();
 
 
@@ -59,6 +61,40 @@ router.get('/switch', (request, response, next) => {
 		averageHour: isNaN(averageHour) ? 0 : averageHour
     });
 
+
+var presenca = ArduinoDataSwitch.List[ArduinoDataSwitch.List.length -1]
+
+console.log('\nIniciando inclusão de novo registro...');
+    console.log(`presenca: ${presenca}`);
+
+    banco.conectar().then(() => {
+
+        return banco.sql.query(`
+        INSERT into registro (registro, dataregistro,FkSensor)
+        values (${presenca}, CONVERT(Datetime, '${agora()}', 120),${parseInt(Math.random()*2)+1});
+        
+        delete from Registro where idRegistro not in 
+        (select top ${registros_mantidos_tabela_leitura} idRegistro from registro order by idRegistro desc);`)
+        .then(() => {
+            console.log('Registro inserido com sucesso!');
+        });
+        
+
+    }).catch(erro => {
+
+        console.error(`Erro ao tentar registrar aquisição na base: ${erro}`);
+
+    }).finally(() => {
+        banco.sql.close();
+    });
+
+    function agora() {
+        const momento_atual = new Date();
+        const retorno = `${momento_atual.toLocaleDateString()} ${momento_atual.toLocaleTimeString()}`;
+        console.log(`Data e hora atuais: ${retorno}`);
+        return retorno;
+    }
+    
 });
 
 router.get('/luminosity', (request, response, next) => {
@@ -77,23 +113,25 @@ router.get('/luminosity', (request, response, next) => {
 		averageHour: isNaN(averageHour) ? 0 : averageHour
     });
 
-router.post('/sendData', (request, response) => {
-    //temperature = ArduinoDataTemp.List[ArduinoDataTemp.List.length -1];
-    //luminosidade = ArduinoDataLuminosity.List[ArduinoDataLuminosity.List.length -1]
-    presenca = ArduinoDataSwitch.List[ArduinoDataSwitch.List.length-1]
+// router.post('/sendData', (request, response) => {
 
-    var data = new Date();
+//     temperature = ArduinoDataTemp.List[ArduinoDataTemp.List.length -1];
+//     Humidity = ArduinoDataHumidity.List[ArduinoDataHumidity.List.length -1];
+//     luminosidade = ArduinoDataLuminosity.List[ArduinoDataLuminosity.List.length -1]
 
-    var sql = "INSERT INTO teste (presenca, dataLeitura) VALUES (?,?)";
+// 	var sql = "INSERT INTO medidas(type, value) VALUES(?)";
+//     var values= [['temperatura',temperature],['umidade',Humidity]];
+    
+//     for (i = 0; i < values.length; i++){
 
-    db.query(sql,[presenca,data], function(err, result) {
-        if (err) throw err;
-        console.log("Number of records inserted: " + result.affectedRows);
-      });
-      
+//         db.query(sql,[values[i]],function(err, result) {
+//             if (err) throw err;
+//             console.log("Medidas inseridas: " + result.affectedRows);
+//         });
+//     }
 
-    response.sendStatus(200);
-})
+//     response.sendStatus(200);
+// })
 
 });
 

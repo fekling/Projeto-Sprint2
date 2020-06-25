@@ -61,7 +61,7 @@ body{
     font-size: 22px;
     background-color: #E1E1E1;
     border: 1px solid black;
-    margin-left: 50px;
+    margin-left: 40%;
     text-shadow: 3px;
     border-radius: 5px;
 }
@@ -89,6 +89,7 @@ body{
     height: 100px;
     background-color: white;
     margin-bottom: 25px;
+
 }
 .risco{
     width: 20%;

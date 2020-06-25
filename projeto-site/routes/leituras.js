@@ -17,7 +17,7 @@ router.get('/ultimas', function(req, res, next) {
 
 	for (let tempos=0; tempos<10; tempos++) {
 		
-		let momento2 = new Date(momento1-10000);
+		let momento2 = new Date(momento1-60000);
 
 		console.log(`m1: ${momento1} - m2: ${momento2}`);
 		
@@ -41,7 +41,7 @@ router.get('/ultimas', function(req, res, next) {
 		}
 		instrucaoSql += instrucao
 
-		momento1.setTime(momento1-10000)
+		momento1.setTime(momento1-60000)
 	}
 
 	instrucaoSql+=';'
@@ -72,7 +72,7 @@ router.get('/tempo-real', function (req, res, next) {
 
 	
 		
-		let momento2 = new Date(momento1-10000);
+		let momento2 = new Date(momento1-60000);
 
 		console.log(`m1: ${momento1} - m2: ${momento2}`);
 		
