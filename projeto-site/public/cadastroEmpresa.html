@@ -5,19 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/dashboart.css">
+	<link rel="stylesheet" href="css/dashboart.css">
+	<script type="text/javascript" src="funcoes.js"></script>
     <title>Cadastro Empresa</title>
 </head>
 
 <body>
-	<div class="sidebar" id="mySidebar">
-		<a href="#" class="closebtn" onclick="closeNav()">x</a>
-		<a href="home.html">Mobility Solution</a>
-		<a href="cadastroEmpresa.html">Cadastrar Empresa</a>
-		<a href="cadastro.html">Cadastrar Usuário</a>
-		<a href="#">Relatórios</a>
-		<a href="#">Configurações</a>
-	</div>
+		<div class="sidebar" id="mySidebar">
+			<a href="#" class="closebtn" onclick="closeNav()">x</a>
+			<a href="home.html"><b id="b_usuario"></b></a>
+			<a href="cadastroEmpresa.html">Cadastrar Empresa</a>
+			<a href="cadastro.html">Cadastrar Usuário</a>
+			<a href="http://mobilitysolution.desk360.com.br/" target="_blank">Suporte</a>
+			<a href="#" onclick="logoff()">Sair</a>
+		</div>
 	<div class="header">
 		<a class="openbtn" onclick="openNav()"> ☰ </a>
 	</div>
@@ -29,3 +30,5 @@
 </body>
 </html>
 <script src="js/menu.js"></script>
+<script>    verificar_autenticacao();
+</script>
