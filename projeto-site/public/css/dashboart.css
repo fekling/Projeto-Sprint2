@@ -61,7 +61,7 @@ body{
     font-size: 22px;
     background-color: #E1E1E1;
     border: 1px solid black;
-    margin-left: 40%;
+    margin-left: 36%;
     text-shadow: 3px;
     border-radius: 5px;
 }
@@ -82,14 +82,13 @@ body{
 }
 .social {
     display: inline-block;
-    margin: 16px;
     margin-top: 25px;
     border-radius: 5px;
     width: 96%;
     height: 100px;
     background-color: white;
     margin-bottom: 25px;
-
+    text-align: center;
 }
 .risco{
     width: 20%;
@@ -131,7 +130,6 @@ padding-top: 20px;
     font-size: 24px;
     border: none;
     border-bottom: black 3px solid;
-    border-radius: 10px;
 }
 
 .box_cadastro button{
@@ -144,4 +142,38 @@ padding-top: 20px;
     border-radius: 20px;
     background: black;
     color: whitesmoke;
+}
+.option {
+    display: inline-block;
+    width: 300px;
+    height:60px;
+    margin-top: 30px;
+    margin-left: 100px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+.option:hover{
+    cursor: pointer;
+}
+.grafico1{
+    width: 45%;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    margin-left: 30px;
+}
+.cont1 {
+    width: 110px;
+    background-color: #363e50;
+    color: #ffff;
+    margin-left: 100px;
+    margin-top: 18px;
+    border-radius: 5px;
+}
+.graficoatual{
+    margin-left: 12%;
+}
+.temp {
+    color: rgb(2, 127, 165);
 }

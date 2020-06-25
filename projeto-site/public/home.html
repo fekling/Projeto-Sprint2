@@ -2,75 +2,107 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/dashboart.css">
-	<title>Dashboard</title>
-	<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
-	<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
-	<script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
-	<script type="text/javascript" src="funcoes.js"></script>
-	<style>
-		canvas {
-			-moz-user-select: none;
-			-webkit-user-select: none;
-			-ms-user-select: none;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/dashboart.css">
+    <title>Dashboard</title>
+    <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+    <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="funcoes.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
 </head>
 
-<body onload="atualizarGrafico();">
-	<div class="sidebar" id="mySidebar">
-		<a href="#" class="closebtn" onclick="closeNav()">x</a>
-		<a href="home.html"><b id="b_usuario"></b></a>
-		<a href="cadastroEmpresa.html">Cadastrar Empresa</a>
+<body>
+    <div class="sidebar" id="mySidebar">
+        <a href="#" class="closebtn" onclick="closeNav()">x</a>
+        <a href="home.html"><b id="b_usuario"></b></a>
+        <a href="cadastroEmpresa.html">Cadastrar Empresa</a>
         <a href="cadastro.html">Cadastrar Usuário</a>
         <a href="http://mobilitysolution.desk360.com.br/" target="_blank">Suporte</a>
-		<a href="#" onclick="logoff()">Sair</a>
-	</div>
-	<div class="header">
-		<a class="openbtn" onclick="openNav()"> ☰ </a>
-	</div>
-	<div id="main">
-		<div class="alertas" id="alert">
-			Ônibus 1
-			<div class="conteudoAlert" id="alert1">
-				<p>Quantidade de Passageiros</p> <span id="span1" class="span"></span>
-			</div>
-		</div>
-		<div style="width:75%;">
-			<div id="div_aguarde">Dados sendo obtidos...</div>
-			<canvas id="canvas_grafico"></canvas>
+        <a href="#" onclick="logoff()">Sair</a>
+    </div>
+    <div class="header">
+        <a class="openbtn" onclick="openNav()"> ☰ </a>
+    </div>
+    <div id="main">
+        <div class="option" onclick="abrirtemporeal()">
+            <div class="cont1 temp" id="temp">Tempo-Real</div>
+        </div>
+        <div class="option" onclick="abrirdiario()">
+            <div class="cont1" id="dia">Diário</div>
+        </div>
+        <div class="option" onclick="abrirsemanal()">
+            <div class="cont1" id="sem">Semanal</div>
+        </div>
+        <div class="alertas" id="alerta">
+            Ônibus 1
+            <div class="conteudoAlert" id="alert1">
+                <p>Quantidade de Passageiros</p> <span id="span1" class="span"></span>
+            </div>
+        </div>
+        <div style="width:75%;" id="graficoreal" class="graficoatual">
+            <div id="div_aguarde">Dados sendo obtidos...</div>
+            <canvas id="canvas_grafico"></canvas>
+        </div>
 
-		<div class="social">
-			<h3>Alerta De Risco</h3>
-			<img src="img/alertaRisco.png" alt="" class="alertaRisco">
-		  </div>
-
-	</div>
-
+        <div style="display: none;" id="semanal">
+            <div class="grafico1">
+                <p>Manhã</p>
+                <canvas class="line-chart1"></canvas>
+            </div>
+            <div class="grafico1">
+                <p>Tarde</p>
+                <canvas class="line-chart2"></canvas>
+            </div>
+        </div>
+        <div style="display: none;" id="diario">
+            <div class="grafico1">
+                <p>Manhã</p>
+                <canvas class="line-chart3"></canvas>
+            </div>
+            <div class="grafico1">
+                <p>Tarde</p>
+                <canvas class="line-chart4"></canvas>
+            </div>
+        </div>
+        <div class="social">
+            <h3>Alerta De Risco</h3>
+            <img src="img/alertaRisco.png" alt="" class="alertaRisco">
+        </div>
+    </div>
 </body>
 
 </html>
+<script src="js/option.js"></script>
 <script src="js/menu.js"></script>
 <script>
-	function mudaCorAlert1(){
-		let muda_alert1 = somatoria;
-		span1.innerHTML = `${muda_alert1} Passageiros`;
-		if(muda_alert1 <=20){
-			alert1.style.backgroundColor = '#27AE60';
-		}
-		else if(muda_alert1 <=30){
-			alert1.style.backgroundColor = '#F1C40F';
-		}
-		else if(muda_alert1 <=35){
-			alert1.style.backgroundColor = '#fff714';
-		}
-		else {
-			alert1.style.backgroundColor = '#E74C3C';
-		}
-	}
-	setInterval(mudaCorAlert1, 3000);
-	let somatoria = 0;
+    function mudaCorAlert1() {
+        let muda_alert1 = somatoria;
+        span1.innerHTML = `${muda_alert1} Passageiros`;
+        if (muda_alert1 <= 20) {
+            alert1.style.backgroundColor = '#27AE60';
+        }
+        else if (muda_alert1 <= 30) {
+            alert1.style.backgroundColor = '#F1C40F';
+        }
+        else if (muda_alert1 <= 35) {
+            alert1.style.backgroundColor = '#fff714';
+        }
+        else {
+            alert1.style.backgroundColor = '#E74C3C';
+        }
+    }
+    setInterval(mudaCorAlert1, 3000);
+    let somatoria = 0;
     window.onload = obterDadosGrafico;
 
     verificar_autenticacao();
@@ -107,11 +139,12 @@
                         dados.datasets[0].data.shift();
                     }
                     dados.labels.push(novoRegistro.momento);
-					somatoria += novoRegistro.passageiros;
-					
+                    somatoria += novoRegistro.passageiros;
+
                     if (somatoria < 0) somatoria = 0;
                     dados.datasets[0].data.push(somatoria);
                     window.grafico_linha.update();
+
 
                     setTimeout(atualizarGrafico, 5000);
                 });
@@ -198,4 +231,154 @@
         setTimeout(atualizarGrafico, 5000);
     }
 
+    var ctx2 = document.getElementsByClassName("line-chart1");
+
+    // Type, Data e options
+    var chartGraph = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"],
+            datasets: [{
+                label: "Semana 1",
+                data: [5, 10, 15, 20, 25, 30, 35],
+                borderWidth: 6,
+                borderColor: 'rgba(77,166,253,0.85)',
+                backgroundColor: 'transparent'
+            },
+            {
+                label: "Semana 2",
+                data: [1, 13, 11, 17, 20, 30, 2],
+                borderWidth: 6,
+                borderColor: 'rgba(6,204,6,0.85)',
+                backgroundColor: 'transparent'
+            },
+            {
+                label: "Semana 3",
+                data: [4, 11, 18, 21, 13, 34, 8],
+                borderWidth: 6,
+                borderColor: 'rgba(243, 7, 7, 0.85)',
+                backgroundColor: 'transparent'
+            },
+            {
+                label: "Semana 4",
+                data: [30, 14, 11, 17, 10, 25, 12],
+                borderWidth: 6,
+                borderColor: 'rgba(231, 231, 14, 0.85)',
+                backgroundColor: 'transparent'
+            }]
+        }
+    });
+    var ctx3 = document.getElementsByClassName("line-chart2");
+
+    // Type, Data e options
+    var chartGraph = new Chart(ctx3, {
+        type: 'line',
+        data: {
+            labels: ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado", "Domingo"],
+            datasets: [{
+                label: "Semana 1",
+                data: [5, 10, 15, 20, 25, 30, 35],
+                borderWidth: 6,
+                borderColor: 'rgba(77,166,253,0.85)',
+                backgroundColor: 'transparent'
+            },
+            {
+                label: "Semana 2",
+                data: [1, 13, 11, 17, 20, 30, 2],
+                borderWidth: 6,
+                borderColor: 'rgba(6,204,6,0.85)',
+                backgroundColor: 'transparent'
+            },
+            {
+                label: "Semana 3",
+                data: [4, 11, 18, 21, 13, 34, 8],
+                borderWidth: 6,
+                borderColor: 'rgba(243, 7, 7, 0.85)',
+                backgroundColor: 'transparent'
+            },
+            {
+                label: "Semana 4",
+                data: [30, 14, 11, 17, 10, 25, 12],
+                borderWidth: 6,
+                borderColor: 'rgba(231, 231, 14, 0.85)',
+                backgroundColor: 'transparent'
+            }]
+        }
+    });
+    var ctx4 = document.getElementsByClassName("line-chart3");
+    var chartGraph = new Chart(ctx4, {
+        type: 'line',
+        data: {
+            labels: ["Início", "Parada 2", "Parada 3", "Parada 4", "Parada 5", "Parada 6", "Parada 7",
+            "Parada 8", "Parada 9", "Parada 10", "Parada 11","Parada 12","Parada 13","Parada 14","Parada 15",
+            "Parada 16","Parada 17","Parada 18","Parada 19","Final"],
+            datasets: [{
+                label: "05:00",
+                data: [5, 10, 15, 20, 25, 30, 35, 40, 35, 30, 25, 20, 15, 10, 5, 10, 15, 20, 25, 30],
+                borderWidth: 6,
+                borderColor: 'rgba(77,166,253,0.85)',
+                backgroundColor: 'transparent'
+            },
+            {
+                label: "07:00",
+                data: [1, 4, 13, 21, 14, 31, 22, 31, 36, 38, 29, 12, 29, 34, 29, 20, 13, 6, 2, 1],
+                borderWidth: 6,
+                borderColor: 'rgba(6,204,6,0.85)',
+                backgroundColor: 'transparent'
+            },
+            {
+                label: "09:00",
+                data: [3, 12, 5, 13, 19, 24, 24, 29, 37, 29, 31, 30, 28, 25, 17, 24, 24, 17, 13, 3],
+                borderWidth: 6,
+                borderColor: 'rgba(243, 7, 7, 0.85)',
+                backgroundColor: 'transparent'
+            },
+            {
+                label: "11:00",
+                data: [10, 13, 16, 11, 14, 17, 28, 25, 32, 21, 26, 29, 20, 18, 16, 14, 12, 10, 10, 0],
+                borderWidth: 6,
+                borderColor: 'rgba(231, 231, 14, 0.85)',
+                backgroundColor: 'transparent'
+            }]
+        }
+    });
+    var ctx5 = document.getElementsByClassName("line-chart4");
+
+    // Type, Data e options
+    var chartGraph = new Chart(ctx5, {
+        type: 'line',
+        data: {
+            labels: ["Início", "Parada 2", "Parada 3", "Parada 4", "Parada 5", "Parada 6", "Parada 7",
+            "Parada 8", "Parada 9", "Parada 10", "Parada 11","Parada 12","Parada 13","Parada 14","Parada 15",
+            "Parada 16","Parada 17","Parada 18","Parada 19","Final"],
+            datasets: [{
+                label: "14:00",
+                data: [5, 10, 15, 20, 25, 30, 35, 40, 35, 30, 25, 20, 15, 10, 5, 10, 15, 20, 25, 30],
+                borderWidth: 6,
+                borderColor: 'rgba(77,166,253,0.85)',
+                backgroundColor: 'transparent'
+            },
+            {
+                label: "16:00",
+                data: [1, 4, 13, 21, 14, 31, 22, 31, 36, 38, 29, 12, 29, 34, 29, 20, 13, 6, 2, 1],
+                borderWidth: 6,
+                borderColor: 'rgba(6,204,6,0.85)',
+                backgroundColor: 'transparent'
+            },
+            {
+                label: "18:00",
+                data: [3, 12, 5, 13, 19, 24, 24, 29, 37, 29, 31, 30, 28, 25, 17, 24, 24, 17, 13, 3],
+                borderWidth: 6,
+                borderColor: 'rgba(243, 7, 7, 0.85)',
+                backgroundColor: 'transparent'
+            },
+            {
+                label: "20:00",
+                data: [10, 13, 16, 11, 14, 17, 28, 25, 32, 21, 26, 29, 20, 18, 16, 14, 12, 10, 10, 0],
+                borderWidth: 6,
+                borderColor: 'rgba(231, 231, 14, 0.85)',
+                backgroundColor: 'transparent'
+            }]
+        }
+    });
 </script>
