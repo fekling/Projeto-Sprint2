@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://kit.fontawesome.com/fe36e9b197.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="css/dashboart.css">
+	<script type="text/javascript" src="funcoes.js"></script>
+    <title>Cadastro Usuario</title>
+</head>
+
+<body>
+	<div class="sidebar" id="mySidebar">
+		<a href="#" class="closebtn" onclick="closeNav()">x</a>
+		<a href="home.html"><b id="b_usuario"></b></a>
+		<a href="cadastroEmpresa.html">Cadastrar Empresa</a>
+        <a href="cadastro.html">Cadastrar Usuário</a>
+        <a href="http://mobilitysolution.desk360.com.br/" target="_blank">Suporte</a>
+		<a href="#" onclick="logoff()">Sair</a>
+	</div>
+	<div class="header">
+		<a class="openbtn" onclick="openNav()"> ☰ </a>
+	</div>
+	<div id="main">
+        <!-- Conteudo da pagina aqui dentro -->
+		<div class="container">
+            
+
+			<div class="box_cadastro">
+				<i class="far fa-user"></i>
+				<h2>Faça o seu cadastro:</h2>
+				<input type="text" placeholder="Nome" id="nickname">
+				<input type="text" placeholder="Email" id="email">
+				<input type ="password" placeholder="Senha" id="senha">
+				<input type="password" placeholder="Confirme sua senha" id="senha2">
+				<button onclick="confirma()">Confimar Cadastro</button>
+			</div>
+
+    </div>
+</body>
+</html>
+<script src="js/menu.js"></script>
+<script>
+	    verificar_autenticacao();
+		function confirma(){
+        let valor_email = email.value;
+        valor_email.trimStart();
+         valor_email.trimEnd();
+        let pegar_senha = senha.value;
+        let pegar_senha2 = senha2.value;
+        if(pegar_senha == pegar_senha2 && valor_email.indexOf ('@') > 0  && valor_email.indexOf('.') > 0  && valor_email.length >= 7){
+            alert('Cadastro feito com sucesso');
+            window.location.href = 'home.html';
+        }else{
+            alert('Cadastro não realizado pois senha ou email podem estar inválidos');
+        }
+        }
+</script>
