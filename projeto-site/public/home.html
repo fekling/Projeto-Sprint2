@@ -306,42 +306,104 @@
         }
     });
     var ctx4 = document.getElementsByClassName("line-chart3");
-    var chartGraph = new Chart(ctx4, {
-        type: 'line',
-        data: {
-            labels: ["Início", "Parada 2", "Parada 3", "Parada 4", "Parada 5", "Parada 6", "Parada 7",
-            "Parada 8", "Parada 9", "Parada 10", "Parada 11","Parada 12","Parada 13","Parada 14","Parada 15",
-            "Parada 16","Parada 17","Parada 18","Parada 19","Final"],
-            datasets: [{
-                label: "05:00",
-                data: [5, 10, 15, 20, 25, 30, 35, 40, 35, 30, 25, 20, 15, 10, 5, 10, 15, 20, 25, 30],
+
+
+    function plotarGraficoManha(linha, dia, contexto) {
+
+        let labels = [];
+        let linhas = [
+            {
+                hora1certo:'05:00',
+                hora2certo:'07:00',
+                hora1:'18:30',
+                hora2:'18:40',
+                label: "5h as 7h",
+                data: [],
                 borderWidth: 6,
                 borderColor: 'rgba(77,166,253,0.85)',
                 backgroundColor: 'transparent'
             },
             {
-                label: "07:00",
-                data: [1, 4, 13, 21, 14, 31, 22, 31, 36, 38, 29, 12, 29, 34, 29, 20, 13, 6, 2, 1],
+                hora1certo:'07:00',
+                hora2certo:'09:00',
+                hora1:'18:40',
+                hora2:'18:50',                
+                label: "7h as 9h",
+                data: [],
                 borderWidth: 6,
                 borderColor: 'rgba(6,204,6,0.85)',
                 backgroundColor: 'transparent'
             },
             {
-                label: "09:00",
-                data: [3, 12, 5, 13, 19, 24, 24, 29, 37, 29, 31, 30, 28, 25, 17, 24, 24, 17, 13, 3],
+                hora1certo:'09:00',
+                hora2certo:'11:00',
+                hora1:'18:50',
+                hora2:'19:00',
+                label: "9h as 11h",
+                data: [],
                 borderWidth: 6,
                 borderColor: 'rgba(243, 7, 7, 0.85)',
                 backgroundColor: 'transparent'
             },
             {
-                label: "11:00",
-                data: [10, 13, 16, 11, 14, 17, 28, 25, 32, 21, 26, 29, 20, 18, 16, 14, 12, 10, 10, 0],
+                hora1certo:'11:00',
+                hora2certo:'12:00',
+                hora1:'19:00',
+                hora2:'19:40',                
+                label: "11h as 12h",
+                data: [],
                 borderWidth: 6,
                 borderColor: 'rgba(231, 231, 14, 0.85)',
                 backgroundColor: 'transparent'
-            }]
+            }
+        ];
+
+        let momentos = [];
+        for (let m=0; m<linhas.length; m++) {
+            momentos.push({
+                momento1: `${dia} ${linhas[m].hora1}`,
+                momento2: `${dia} ${linhas[m].hora2}`
+            });
         }
-    });
+
+        momentos.forEach((momento, m) => {
+            fetch(`/leituras/estatisticas/${linha}/${momento.momento1}/${momento.momento2}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (json) {
+
+                    console.log(`Dados de estatisticas: ${JSON.stringify(json)}`);
+
+                    json.forEach(item => {
+                        if (m==0) {
+                            labels.push(`P ${item.parada}`);
+                        }
+                        linhas[m].data.push(item.registros);
+                    });
+
+                    if (m == momentos.length-1) {
+                        var chartGraph = new Chart(ctx4, {
+                            type: 'line',
+                            data: {
+                                labels: labels,
+                                datasets: linhas
+                            }
+                        });
+                    }
+
+                });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+        });
+
+
+        
+    }
+    
     var ctx5 = document.getElementsByClassName("line-chart4");
 
     // Type, Data e options

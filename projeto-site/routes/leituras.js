@@ -109,23 +109,34 @@ router.get('/tempo-real', function (req, res, next) {
 });
 
 
-// estatísticas (max, min, média, mediana, quartis etc)
-router.get('/estatisticas', function (req, res, next) {
+
+router.get('/estatisticas/:linha/:momento1/:momento2', function (req, res, next) {
+	const linha = req.params.linha;
+	const momento1 = req.params.momento1;
+	const momento2 = req.params.momento2;
 	
 	console.log(`Recuperando as estatísticas atuais`);
 
-	const instrucaoSql = `select 
-							max(temperatura) as temp_maxima, 
-							min(temperatura) as temp_minima, 
-							avg(temperatura) as temp_media,
-							max(umidade) as umidade_maxima, 
-							min(umidade) as umidade_minima, 
-							avg(umidade) as umidade_media 
-						from leitura`;
+	const instrucaoSql = `
+	select rt.parada, 
+	(
+		select count(r.idRegistro) from registro r, Sensor s , Onibus o, Linha l 
+		where r.fkSensor  = s.idSensor and s.fkOnibus = o.idOnibus and o.fkLinha = l.idLinha 
+		and l.idLinha = ${linha} and s.localSensor = 'Entrada'
+		and r.parada  = rt.parada 
+		and r.dataregistro BETWEEN '${momento1}' and '${momento2}'
+	) as registros
+	from registro rt, Sensor st , Onibus ot , Linha lt
+	where rt.fkSensor  = st.idSensor and st.fkOnibus = ot.idOnibus and ot.fkLinha = lt.idLinha
+	and lt.idLinha = ${linha}
+	group by rt.parada order by rt.parada 
+	`;
+
+	console.log(instrucaoSql);
 
 	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
 		.then(resultado => {
-			res.json(resultado[0]);
+			res.json(resultado);
 		}).catch(erro => {
 			console.error(erro);
 			res.status(500).send(erro.message);
