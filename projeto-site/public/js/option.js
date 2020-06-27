@@ -1,3 +1,14 @@
+function escolherData(){
+    let dataEscolhida = data.value;
+    let hoje = new Date();
+    if(dataEscolhida != undefined){
+        plotarGraficoManha(1,dataEscolhida);
+    }
+    else{
+        plotarGraficoManha(1,hoje);
+    
+    }
+}
 function abrirsemanal(){
     semanal.style.display = 'block';
     graficoreal.style.display = 'none';
@@ -24,4 +35,5 @@ function abrirdiario(){
     sem.style.color = 'white';
     dia.style.color = 'rgb(2, 127, 165)';
     temp.style.color = 'white';
+    window.onload = escolherData();
 }
