@@ -63,15 +63,16 @@ router.get('/switch', (request, response, next) => {
 
 
 var presenca = ArduinoDataSwitch.List[ArduinoDataSwitch.List.length -1]
-
 console.log('\nIniciando inclusão de novo registro...');
-    console.log(`presenca: ${presenca}`);
+    
+    const parada = parseInt(Math.random()*10)+1
+    const tipo = parada==1?'i':parada==10?'f':'c'
 
     banco.conectar().then(() => {
 
         return banco.sql.query(`
-        INSERT into registro (registro, dataregistro,FkSensor)
-        values (${presenca}, CONVERT(Datetime, '${agora()}', 120),${parseInt(Math.random()*2)+1});
+        INSERT into registro (tipoparada, parada, dataregistro,FkSensor)
+        values ('${tipo}', ${parada}, CONVERT(Datetime, '${agora()}', 120),${parseInt(Math.random()*2)+1});
         
         delete from Registro where idRegistro not in 
         (select top ${registros_mantidos_tabela_leitura} idRegistro from registro order by idRegistro desc);`)
