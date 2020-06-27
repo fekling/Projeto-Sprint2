@@ -108,7 +108,7 @@ body{
 .box_cadastro{
     margin: auto;
     width: 45%;
-    height: 646px;
+    height: 700px;
     background: #363e50;
     border-radius: 20px;
     margin-top: 10px;
@@ -130,6 +130,7 @@ padding-top: 20px;
     font-size: 24px;
     border: none;
     border-bottom: black 3px solid;
+    border-radius: 10px;
 }
 
 .box_cadastro button{
