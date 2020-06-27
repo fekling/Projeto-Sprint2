@@ -67,12 +67,15 @@ console.log('\nIniciando inclusão de novo registro...');
     
     const parada = parseInt(Math.random()*10)+1
     const tipo = parada==1?'i':parada==10?'f':'c'
-
+    var qtdPessoas = 0;
+    if(presenca==0){
+        presenca = 1;
+    }
     banco.conectar().then(() => {
 
         return banco.sql.query(`
-        INSERT into registro (tipoparada, parada, dataregistro,FkSensor)
-        values ('${tipo}', ${parada}, CONVERT(Datetime, '${agora()}', 120),${parseInt(Math.random()*2)+1});
+        INSERT into registro (tipoparada, parada, dataregistro,FkSensor,registro)
+        values ('${tipo}', ${parada}, CONVERT(Datetime, '${agora()}', 120),${parseInt(Math.random()*2)+1},${presenca});
         
         delete from Registro where idRegistro not in 
         (select top ${registros_mantidos_tabela_leitura} idRegistro from registro order by idRegistro desc);`)
