@@ -31,7 +31,7 @@ class NewArduinoSwitch {
             this.__listDataTemp.push(data_float);
             this.listData.push(data_float);
 
-        }, 3000);
+        }, 30000);
     }
 }
 

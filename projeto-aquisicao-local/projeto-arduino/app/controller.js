@@ -5,7 +5,7 @@ const { ArduinoDataSwitch } = require('./serialSwitch')
 const { ArduinoDataLuminosity} = require('./serialLuminosidity')
 //const db = require('./database')
 const banco = require(`./database`);
-const registros_mantidos_tabela_leitura = 300;
+const registros_mantidos_tabela_leitura = 10000;
 const router = express.Router();
 
 
