@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://kit.fontawesome.com/fe36e9b197.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="css/dashboart.css">
+	<script type="text/javascript" src="funcoes.js"></script>
+	<title>Cadastro Usuario</title>
+</head>
+
+<body  class="body">
+    <div class="menu">
+        <ul>
+            <li><a href="Financeiro/SIMULADOR FINANCEIRO.html">Simulador Financeiro</a></li>
+            <li><a href="index.html">Pagina inicial</a></li>
+
+        </ul>
+    </div>
+
+	<div id="main">
+		<!-- Conteudo da pagina aqui dentro -->
+		<div class="container">
+
+
+			<div class="box_cadastro">
+				<i class="far fa-user"></i>
+				<h2>Faça o seu cadastro:</h2>
+				<form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+					<input type="text" id="nome" class="input-padrao" placeholder="Nome" name="nome" required>
+					<input type="text" id="nomeusuario" class="input-padrao" placeholder="Nome Usuario" name="login" required>
+					<input type="text" id="email" class="input-padrao" placeholder="Email" name="email" required>
+					<input type="password" id="senha" class="input-padrao" placeholder="Senha" name="senha" required>
+					<input type="password" placeholder="Confirme sua senha" id="senha2" required>
+					<input type="submit" class="input-padrao btn">
+			</div>
+
+		</div>
+</body>
+
+</html>
+<script src="js/menu.js"></script>
+<script>
+
+	function cadastrar() {
+		let valor_email = email.value;
+		valor_email.trimStart();
+		valor_email.trimEnd();
+		let pegar_senha = senha.value;
+		let pegar_senha2 = senha2.value;
+		if (pegar_senha == pegar_senha2 && valor_email.indexOf('@') > 0 && valor_email.indexOf('.') > 0 && valor_email.length >= 7) {
+			alert('Cadastro feito com sucesso');
+			window.location.href = 'home.html';
+		} else {
+			alert('Cadastro não realizado pois senha ou email podem estar inválidos');
+		}
+	
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+            
+            if (response.ok) {
+
+                window.location.href='teladelogin.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    div_erro.innerHTML = resposta;
+                });
+            }
+        });
+
+        return false;
+    }
+
+</script>
