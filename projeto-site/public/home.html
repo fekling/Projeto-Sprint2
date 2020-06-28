@@ -21,7 +21,7 @@
     </style>
 </head>
 
-<body>
+<body class="bodydash">
     <div class="sidebar" id="mySidebar">
         <a href="#" class="closebtn" onclick="closeNav()">x</a>
         <a href="home.html"><b id="b_usuario"></b></a>
@@ -33,16 +33,20 @@
     <div class="header">
         <a class="openbtn" onclick="openNav()"> ☰ </a>
     </div>
+   
     <div id="main">
-        <div class="option" onclick="abrirtemporeal()">
-            <div class="cont1 temp" id="temp">Tempo-Real</div>
-        </div>
-        <div class="option" onclick="abrirdiario()">
-            <div class="cont1" id="dia">Diário</div>
-        </div>
-        <div class="option" onclick="abrirsemanal()">
-            <div class="cont1" id="sem">Semanal</div>
-        </div>
+            <div id="selector" class="selector"> 
+                <div class="option" onclick="abrirtemporeal()">
+                    <div class="cont1 temp" id="temp">Tempo-Real</div>
+                </div>
+                <div class="option" onclick="abrirdiario()">
+                    <div class="cont1" id="dia">Diário</div>
+                </div>
+                <div class="option" onclick="abrirsemanal()">
+                    <div class="cont1" id="sem">Semanal</div>
+                </div>
+            </div>
+       
         <div class="alertas" id="alerta">
             Ônibus 1
             <div class="conteudoAlert" id="alert1">
@@ -65,9 +69,10 @@
             </div>
         </div>
         <div style="display: none;" id="diario">
-            <div class="grafico1">
+            <div class="grafico1"><center>
                 <label for="data">Escolha um dia<input type="date" id="data"></label>
                 <button onclick="escolherData()">Enviar</button>
+            </center>
                 <p>Manhã</p>
                 <canvas class="line-chart3"></canvas>
             </div>
@@ -81,6 +86,7 @@
             <img src="img/alertaRisco.png" alt="" class="alertaRisco">
         </div>
     </div>
+    
 </body>
 
 </html>
