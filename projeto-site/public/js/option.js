@@ -1,12 +1,15 @@
+const { mapFinderOptions } = require("sequelize/types/lib/utils");
+
 function escolherData(){
     let dataEscolhida = data.value;
     let hoje = new Date();
     if(dataEscolhida != undefined){
         plotarGraficoManha(1,dataEscolhida);
+        plotarGraficotarde(1,dataEscolhida);
     }
     else{
         plotarGraficoManha(1,hoje);
-    
+        plotarGraficotarde(1,hoje);
     }
 }
 function abrirsemanal(){
@@ -36,4 +39,8 @@ function abrirdiario(){
     dia.style.color = 'rgb(2, 127, 165)';
     temp.style.color = 'white';
     window.onload = escolherData();
+}
+function abrirgraficos(){
+    main.style.display = 'block';
+    welcome.style.display = 'none';
 }

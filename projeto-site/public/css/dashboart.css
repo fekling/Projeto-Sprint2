@@ -178,3 +178,18 @@ padding-top: 20px;
 .temp {
     color: rgb(2, 127, 165);
 }
+.escolhas {
+    margin-top: 20px;
+    padding: 10px;
+    height: 30px;
+}
+.welcome {
+    text-align: center;
+    margin-top: 0px;
+    background-image: url("../img/bemvindo.png");
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 400px;
+    background-position: center;
+}
