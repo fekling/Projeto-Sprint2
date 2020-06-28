@@ -11,35 +11,40 @@
 	<title>Cadastro Usuario</title>
 </head>
 
-<body>
-	<div class="sidebar" id="mySidebar">
-		<a href="#" class="closebtn" onclick="closeNav()">x</a>
-		<a href="home.html"><b id="b_usuario"></b></a>
-		<a href="cadastroEmpresa.html">Cadastrar Empresa</a>
-		<a href="cadastro.html">Cadastrar Usuário</a>
-		<a href="http://mobilitysolution.desk360.com.br/" target="_blank">Suporte</a>
-		<a href="#" onclick="logoff()">Sair</a>
-	</div>
-	<div class="header">
-		<a class="openbtn" onclick="openNav()"> ☰ </a>
-	</div>
-	<div id="main">
-		<!-- Conteudo da pagina aqui dentro -->
-		<div class="container">
+<body style="margin: 0;">
+	<div style="background-image: url('../img/tey.jpg');background-size: cover;
+	background-attachment: fixed;background-position: center;">
+		<div class="sidebar" id="mySidebar">
+			<a href="#" class="closebtn" onclick="closeNav()">x</a>
+			<a href="home.html"><b id="b_usuario"></b></a>
+			<a href="cadastroEmpresa.html">Cadastrar Empresa</a>
+			<a href="cadastro.html">Cadastrar Usuário</a>
+			<a href="http://mobilitysolution.desk360.com.br/" target="_blank">Suporte</a>
+			<a href="#" onclick="logoff()">Sair</a>
+		</div>
+		<div class="header">
+			<a class="openbtn" onclick="openNav()"> ☰ </a>
+		</div>
+		<div id="main">
+			<!-- Conteudo da pagina aqui dentro -->
+			<div class="container">
 
 
-			<div class="box_cadastro">
-				<i class="far fa-user"></i>
-				<h2>Faça o seu cadastro:</h2>
-				<form id="form_cadastro" method="post" onsubmit="return cadastrar()">
-					<input type="text" id="nome" class="input-padrao" placeholder="Nome" name="nome" required>
-					<input type="text" id="nomeusuario" class="input-padrao" placeholder="Nome Usuario" name="login" required>
-					<input type="text" id="email" class="input-padrao" placeholder="Email" name="email" required>
-					<input type="password" id="senha" class="input-padrao" placeholder="Senha" name="senha" required>
-					<input type="password" placeholder="Confirme sua senha" id="senha2" required>
-					<input type="submit" class="input-padrao btn">
+				<div class="box_cadastro">
+					<i class="far fa-user"></i>
+					<h2>Faça o seu cadastro:</h2>
+					<form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+						<input type="text" id="nome" class="input-padrao" placeholder="Nome" name="nome" required>
+						<input type="text" id="nomeusuario" class="input-padrao" placeholder="Nome Usuario" name="login"
+							required>
+						<input type="text" id="email" class="input-padrao" placeholder="Email" name="email" required>
+						<input type="password" id="senha" class="input-padrao" placeholder="Senha" name="senha"
+							required>
+						<input type="password" placeholder="Confirme sua senha" id="senha2" required>
+						<input type="submit" class="input-padrao btn">
+				</div>
+
 			</div>
-
 		</div>
 </body>
 
@@ -59,27 +64,27 @@
 		} else {
 			alert('Cadastro não realizado pois senha ou email podem estar inválidos');
 		}
-	
-        var formulario = new URLSearchParams(new FormData(form_cadastro));
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            body: formulario
-        }).then(function (response) {
-            
-            if (response.ok) {
 
-                window.location.href='login.html';
+		var formulario = new URLSearchParams(new FormData(form_cadastro));
+		fetch("/usuarios/cadastrar", {
+			method: "POST",
+			body: formulario
+		}).then(function (response) {
 
-            } else {
+			if (response.ok) {
 
-                console.log('Erro de cadastro!');
-                response.text().then(function (resposta) {
-                    div_erro.innerHTML = resposta;
-                });
-            }
-        });
+				window.location.href = 'login.html';
 
-        return false;
-    }
+			} else {
+
+				console.log('Erro de cadastro!');
+				response.text().then(function (resposta) {
+					div_erro.innerHTML = resposta;
+				});
+			}
+		});
+
+		return false;
+	}
 
 </script>

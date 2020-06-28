@@ -41,6 +41,10 @@ function abrirdiario(){
     window.onload = escolherData();
 }
 function abrirgraficos(){
+    var mudar = linha_onibus.value;
+    var mudar2 = numero_onibus.value;
+    if(mudar == 1 && mudar2 == 1){
     main.style.display = 'block';
     welcome.style.display = 'none';
+    }
 }

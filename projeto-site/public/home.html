@@ -33,8 +33,7 @@
     <div class="header">
         <a class="openbtn" onclick="openNav()"> ☰ </a>
     </div>
-<<<<<<< HEAD
-    <div class="escolhas">
+    <div class="escolhas" id="escolhas">
         Linha:<select id="linha_onibus">
             <option value="#">Selecione</option>
             <option value="1">Morumbi</option>
@@ -49,31 +48,17 @@
     <div class="welcome" id="welcome"></div>
     <div id="main" style="display: none;">
 
-        <div class="option" onclick="abrirtemporeal()">
-            <div class="cont1 temp" id="temp">Tempo-Real</div>
-        </div>
-        <div class="option" onclick="abrirdiario()">
-            <div class="cont1" id="dia">Diário</div>
-        </div>
-        <div class="option" onclick="abrirsemanal()">
-            <div class="cont1" id="sem">Semanal</div>
-        </div>
-=======
-   
-    <div id="main">
-            <div id="selector" class="selector"> 
-                <div class="option" onclick="abrirtemporeal()">
-                    <div class="cont1 temp" id="temp">Tempo-Real</div>
-                </div>
-                <div class="option" onclick="abrirdiario()">
-                    <div class="cont1" id="dia">Diário</div>
-                </div>
-                <div class="option" onclick="abrirsemanal()">
-                    <div class="cont1" id="sem">Semanal</div>
-                </div>
+        <div class="selector" id="selector">
+            <div class="option" onclick="abrirtemporeal()">
+                <div class="cont1 temp" id="temp">Tempo-Real</div>
             </div>
-       
->>>>>>> ca403b5d2b7e6ee3b79853ff1aeb14eedb3d6016
+            <div class="option" onclick="abrirdiario()">
+                <div class="cont1" id="dia">Diário</div>
+            </div>
+            <div class="option" onclick="abrirsemanal()">
+                <div class="cont1" id="sem">Semanal</div>
+            </div>
+        </div>
         <div class="alertas" id="alerta">
             Ônibus 1
             <div class="conteudoAlert" id="alert1">
@@ -96,18 +81,11 @@
             </div>
         </div>
         <div style="display: none;" id="diario">
-<<<<<<< HEAD
             <center>
                 <div class="horario"><label for="data">Escolha um dia<input type="date" id="data"></label><br>
                     <button onclick="escolherData()">Enviar</button></div>
             </center>
             <div class="grafico1">
-=======
-            <div class="grafico1"><center>
-                <label for="data">Escolha um dia<input type="date" id="data"></label>
-                <button onclick="escolherData()">Enviar</button>
-            </center>
->>>>>>> ca403b5d2b7e6ee3b79853ff1aeb14eedb3d6016
                 <p>Manhã</p>
                 <canvas class="line-chart3"></canvas>
             </div>
