@@ -52,29 +52,29 @@
 		let pegar_senha2 = senha2.value;
 		if (pegar_senha == pegar_senha2 && valor_email.indexOf('@') > 0 && valor_email.indexOf('.') > 0 && valor_email.length >= 7) {
 			alert('Cadastro feito com sucesso');
-			window.location.href = 'home.html';
+			var formulario = new URLSearchParams(new FormData(form_cadastro));
+			fetch("/usuarios/cadastrar", {
+				method: "POST",
+				body: formulario
+			}).then(function (response) {
+				
+				if (response.ok) {
+					alert('Falha ao tentar cadastrar usuario');
+
+				} else {
+
+					console.log('Erro de cadastro!');
+					response.text().then(function (resposta) {
+						div_erro.innerHTML = resposta;
+					});
+				}
+			});
+			window.location.href = 'teladelogin.html';
 		} else {
 			alert('Cadastro não realizado pois senha ou email podem estar inválidos');
 		}
 	
-        var formulario = new URLSearchParams(new FormData(form_cadastro));
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            body: formulario
-        }).then(function (response) {
-            
-            if (response.ok) {
-
-                window.location.href='teladelogin.html';
-
-            } else {
-
-                console.log('Erro de cadastro!');
-                response.text().then(function (resposta) {
-                    div_erro.innerHTML = resposta;
-                });
-            }
-        });
+        
 
         return false;
     }
